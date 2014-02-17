@@ -6,7 +6,7 @@ public class EscribirFichero {
 
 private String lista[];
 
-public void EscribirFichero(){}
+public EscribirFichero(){}
 
 
 
