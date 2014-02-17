@@ -1,4 +1,6 @@
 package negocio;
+import java.util.List;
+
 import util.*;
 public class EscribeHTML extends LeerFichero{
 
@@ -14,6 +16,11 @@ public class EscribeHTML extends LeerFichero{
 	
 
 	private class EscribeLog extends EscribirFichero{
+
+		public EscribeLog() {
+			super(lista, nombreArchivo);
+			// TODO Auto-generated constructor stub
+		}
 
 	}
 }
