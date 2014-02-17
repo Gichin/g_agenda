@@ -1,10 +1,24 @@
 package util;
 
+import java.util.Arrays;
+
 public class EscribirFichero {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+private String lista[];
 
-	}
+public EscribirFichero(){}
+
+
+
+
+public String[] getLista() {
+	return lista;
+}
+
+public void setLista(String[] lista) {
+	this.lista = lista;
+}
+
+
 
 }
