@@ -1,7 +1,4 @@
-/**
- * 
- */
-package test;
+package negocio;
 
 import static org.junit.Assert.*;
 
@@ -16,33 +13,35 @@ import org.junit.Test;
 
 import util.LeerFichero;
 
-/**
- * @author Ester Mesa
- *
- */
-public class LeerFicheroTest
+public class LeerFicheroConfigTest {
 
-{
 
 	@Test (expected=IOException.class)
 	public void ProbarConstructorParametrotest() throws IOException
 	{	
-		new LeerFichero("a");		
+		new LeerFicheroConfig("a");		
 	}
-
 	@Test ()
 	public void ProbarConstructorParametrotestExcepcion() throws IOException
 	{	
-		new LeerFichero("peticions.txt");		
+		new LeerFicheroConfig("config.txt");		
 	}
-	
+		
 	@Test ()
 	public void ProbarConstructorParametrotestExcepcionLista() throws IOException
 	{	
 		
-		LeerFichero Lee =new LeerFichero("peticions.txt");
+		LeerFicheroConfig Lee =new LeerFicheroConfig("config.txt");
 		List <String> Lista = Lee.getLista();
 		System.out.println(Lista);
 	}
+	@Test ()
 	
+	public void ProbarExcepcionLista() throws IOException
+	{	
+		LeerFicheroConfig Lee =new LeerFicheroConfig("config.txt");
+		System.out.println(Lee.getAny());
+		System.out.println(Lee.getIdiomaE());
+
+	}
 }
