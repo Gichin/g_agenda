@@ -1,6 +1,6 @@
 package negocio;
 import util.*;
-public class EscribeHTML {
+public class EscribeHTML extends LeerFichero{
 
 	EscribeLog Log = new EscribeLog();	
 	
