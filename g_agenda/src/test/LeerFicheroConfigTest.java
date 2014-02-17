@@ -1,9 +1,11 @@
-package negocio;
+package test;
 
 import static org.junit.Assert.*;
 
 import java.io.IOException;
 import java.util.List;
+
+import negocio.LeerFicheroConfig;
 
 import org.junit.After;
 import org.junit.AfterClass;
