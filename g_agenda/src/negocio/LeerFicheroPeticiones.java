@@ -101,15 +101,17 @@ public class LeerFicheroPeticiones  extends LeerFichero {
 		int uBound = 0;
 		ArrayList<Integer> dias = new ArrayList<Integer>();
 		compara = fInicio.compareTo(fFin);
+		int test = fInicio.get(Calendar.YEAR);
+		int test2 = fInicio.get(Calendar.MONTH);
 		//Si es negativo fInicio es antes que fFin. 0 son iguales. >0 FInicio es después de fFin		
 			while (compara<0){
 				
-				if ((fInicio.MONTH == this.mes) && (fInicio.YEAR == this.anyo)){
-					dias.add((Integer)fInicio.DAY_OF_MONTH);
+				if ((fInicio.get(Calendar.MONTH) == this.mes) && (fInicio.get(Calendar.YEAR) == this.anyo)){
+					dias.add((Integer)fInicio.get(Calendar.DAY_OF_MONTH));
 					
 				}
 				
-				fInicio.add(fInicio.DAY_OF_MONTH, 1);
+				fInicio.add(Calendar.DAY_OF_MONTH, 1);
 				compara = fInicio.compareTo(fFin);
 			}
 			
