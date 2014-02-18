@@ -17,7 +17,7 @@ public class LeerFicheroPeticiones  extends LeerFichero {
 	
 	private int setMaxDias(int mes, int anyo){
 		Calendar ca = Calendar.getInstance();
-		ca.set(Calendar.MONTH, mes -1);
+		ca.set(Calendar.MONTH, mes );
 		ca.set(Calendar.YEAR, anyo);
 		return ca.getActualMaximum(Calendar.DAY_OF_MONTH);
 	} 
@@ -68,47 +68,33 @@ public class LeerFicheroPeticiones  extends LeerFichero {
 		anyoI= Integer.parseInt(fechaInicio.split("/")[2]);
 		fInicio.clear();
 		fInicio.set(Calendar.YEAR, anyoI);
-		fInicio.set(Calendar.MONTH, mesI );
+		fInicio.set(Calendar.MONTH, mesI-1);
 		fInicio.set(Calendar.DAY_OF_MONTH, diaI);
-		
-		/*
-		 fInicio.set(Integer.parseInt(fechaInicio.split("/")[2]),
-				Integer.parseInt(fechaInicio.split("/")[1]), 
-				Integer.parseInt(fechaInicio.split("/")[0]));
-		*/
+
 		
 		diaF = Integer.parseInt(fechaFin.split("/")[0]);
 		mesF = Integer.parseInt(fechaFin.split("/")[1]);
 		anyoF= Integer.parseInt(fechaFin.split("/")[2]);
 		fFin.clear();
 		fFin.set(Calendar.YEAR, anyoF);
-		fFin.set(Calendar.MONTH, mesF);
+		fFin.set(Calendar.MONTH, mesF-1);
 		fFin.set(Calendar.DAY_OF_MONTH, diaF);
+
 		
-		/*
-		fFin.set(Integer.parseInt(fechaFin.split("/")[2]), 
-				Integer.parseInt(fechaFin.split("/")[1]), 
-				Integer.parseInt(fechaFin.split("/")[0]));
-		*/
-		
-		
-		
-		
-		
+
 		
 		int compara;
 		int indice = 0;
 		int uBound = 0;
 		ArrayList<Integer> dias = new ArrayList<Integer>();
 		compara = fInicio.compareTo(fFin);
-		int test = fInicio.get(Calendar.YEAR);
-		int test2 = fInicio.get(Calendar.MONTH);
+
 		//Si es negativo fInicio es antes que fFin. 0 son iguales. >0 FInicio es después de fFin		
-			while (compara<0){
+			while (compara<=0){
 				
 				if ((fInicio.get(Calendar.MONTH) == this.mes) && (fInicio.get(Calendar.YEAR) == this.anyo)){
 					dias.add((Integer)fInicio.get(Calendar.DAY_OF_MONTH));
-					
+					System.out.println(fInicio.getTime());
 				}
 				
 				fInicio.add(Calendar.DAY_OF_MONTH, 1);
@@ -126,22 +112,6 @@ public class LeerFicheroPeticiones  extends LeerFichero {
 
 
 		
-		/*
-		if ((fInicio.YEAR==this.anyo) && (fFin.YEAR==this.anyo)){
-			if ((fInicio.MONTH < this.mes) && (this.mes < fFin.MONTH) ){
-				uBound = this.dias;
-				
-			}
-			else if ((fInicio.MONTH < this.mes) && (this.mes == fFin.MONTH)){
-				iBound = fFin.DATE;
-			}
-			else if ((fInicio.MONTH == this.mes) && (this.mes < fFin.MONTH)){
-				iBound = F
-			}
-
-		}
-		else if((fInicio.YEAR==this.anyo) && (fFin.YEAR>=this.anyo)){}
-		*/
 				
 
 	private int[] TratarFechas(String fechaInicio, String fechaFin) {
@@ -181,7 +151,7 @@ public class LeerFicheroPeticiones  extends LeerFichero {
 	{
 		super(fichero);
 		this.anyo= anyo;
-		this.mes = mes;
+		this.mes = mes-1;
 		this.dias = this.setMaxDias(this.mes, this.anyo);
 		
 		TrataEntradas();
