@@ -38,8 +38,7 @@ public class LeerFicheroTest
 	
 	@Test ()
 	public void ProbarConstructorParametrotestExcepcionLista() throws IOException
-	{	
-		
+	{			
 		LeerFichero Lee =new LeerFichero("peticions.txt");
 		List <String> Lista = Lee.getLista();
 		System.out.println(Lista);
