@@ -33,9 +33,7 @@ import javax.activation.MailcapCommandMap;
 			// Método constructor. Hay que pasar una lista con los datos, y el nombre del archivo que quieres generar
 			public  EscribirFichero(List<String> lista, String nombreArchivo) throws IOException{
 				this.lista=lista;
-				this.nombreArchivo=nombreArchivo;
-				
-				
+				this.nombreArchivo=nombreArchivo;								
 				
 			// Creamos el fichero. También funciona con **PrintWriter pw = new PrintWriter(nombreArchivo);**
 			PrintWriter fichero = new PrintWriter( new BufferedOutputStream(new FileOutputStream(nombreArchivo)),true);				 
@@ -53,17 +51,16 @@ import javax.activation.MailcapCommandMap;
 			
 			
 			
-			/*			public static void main(String[] args) throws IOException {
+			public static void main(String[] args) throws IOException {
 				
 				List<String> listaPepito =				
-						
 						
 						new ArrayList<String>() {{ add("probando el bucle"); add("#Activitat ReunioC");add("Espai: Sala1 Dia: X 19/11/2008 Hora: 10-11 Conflicte con: ReunioJava");add("Espai: Sala1 Dia: V 21/11/2008 Hora: 10-11 Conflicte con: ReunioJava");add("ultima entrada");}};
 				
 				
 				EscribirFichero fichePepito=new EscribirFichero (listaPepito,"incidencias.log");
 				System.out.println(fichePepito);
-			}*/
+			}
 			
 	}
 
