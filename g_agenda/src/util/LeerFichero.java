@@ -11,7 +11,7 @@ public class LeerFichero
 {
 	private List<String> lista = new ArrayList<String>();	
 	
-	public LeerFichero()
+	public LeerFichero() throws Exception
 	{}
 	
 	public LeerFichero (String Fichero) throws IOException	{
@@ -22,8 +22,8 @@ public class LeerFichero
         				 new FileInputStream(Fichero),"UTF-8"));		      
 			         
          while ((lineafichero=buffer.readLine())!=null)
-		   	 lista.add(lineafichero);
-     		//System.out.println(lista);
+		    lista.add(lineafichero);
+     	//	System.out.println(lista);
 		
 	}
 	
