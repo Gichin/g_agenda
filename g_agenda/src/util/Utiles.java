@@ -5,109 +5,59 @@ import java.util.List;
 
 public class Utiles {	
 
-	public static int [] Horas_Array(String Hor)	{		
+	public static int [] Horas_Array(String Hor)	{			
 				
 		String [] Parte = Hor.split("_");		
 		String [] Parte1;
 		String [] Parte2;				
 		Parte1 =(Parte[0].split("-"));
 		
-		int horaI, horaF, horaT;
-				
-		horaI=Integer.parseInt(Parte1 [0]);
-		horaF=Integer.parseInt(Parte1 [1]);
-		horaT=horaF-horaI;
+		int hora1I, hora1F, hora1T;
+		int hora2I = 0, hora2F = 0, hora2T = 0;
+		int ArryT = 0;	
+						
+		hora1I=Integer.parseInt(Parte1 [0]);
+		hora1F=Integer.parseInt(Parte1 [1]);
 		
-		int[] iHora1 = new int[horaT];	
-	
+		hora1T=hora1F-hora1I;			
+		int[] iHora1 = new int[hora1T];					
+		ArryT= hora1T;
 		
-		int[] iHora2 = null ;	
-		
-		if (horaT ==1)
-		{
-			iHora1 [0]=horaI;	
-		}else{
-		
-		for (int i=1; i!=horaT; i++)
-		{
-			iHora1 [0]=horaI;	
-			iHora1 [i]=horaI+1;	
-		}
-		}			
-				
 		if (Parte.length >1)  {			
 			Parte2 =(Parte[1].split("-"));
 			
-			horaI=Integer.parseInt(Parte2 [0]);
-			horaF=Integer.parseInt(Parte2 [1]);
-			horaT=horaF-horaI;
-			
-			iHora2 = new int[horaT];	
-			if (horaT ==1)
-			{
-				iHora2 [0]=horaI;	
-			}else{
-				int cont=horaI;
-			for (int i=1; i!=horaT; i++)			
-			{			
-				iHora2 [0]=horaI;	
-				iHora2 [i]=cont+1;	
-				cont++;
-			}
+			hora2I=Integer.parseInt(Parte2 [0]);
+			hora2F=Integer.parseInt(Parte2 [1]);
+			hora2T=hora2F-hora2I;			
+			int[] iHora2 = new int[hora2T];					
+			ArryT=ArryT+hora2T;		
+		}
 					
-			}
-			
+		int[] Arry = new int[ArryT];		
+		int i = 0;
+		
+		for (int n:iHora1){			
+			Arry[i]=hora1I;			
+			System.out.println(Arry[i]);
+			i++;
+			hora1I++;
 		}
 		
-		int ArryT = 0;		
+		int[] iHora2 = new int[hora2T];	
 		
-		if ( iHora2 != null)  
-			{
-				ArryT= iHora1.length + iHora2.length;
-			}else
-			{
-				ArryT= iHora1.length ;
-			}
-					
-		
-		int[] Arry = new int[ArryT];	
-		int total=0;
-			
-		if ( iHora2.length==0)
-		{	for (int n: iHora1)
-		{
-			total+=n;			
-			Arry [n] = iHora1 [n];	
-		}
-			
-		}else
-		{	
-		for ( int i: Arry)	{			
-			
-			for (int n: iHora1)
-			{
-				total+=n;			
-				Arry [i] = iHora1 [n];	
-			}
-			 total=0; 
-			 
-			 for (int x: iHora2)
-			{
-				total+=x;			
-			Arry [i] = iHora1 [x];	
-			}	
-		}
-		}		
-		
-		return Arry;			
+		for (int n:iHora2){					
+			Arry[i]=hora2I;			
+			System.out.println(Arry[i]);
+			i++;
+			hora2I++;
+		}	
+		return Arry;	
 	}
+	
 	public static void main(String[] args) {	
-		
-		Horas_Array ("08-9");
-		Horas_Array ("08-09_15-20");
-		
-		
-
-	}
+			
+			Horas_Array ("08-12");
+			Horas_Array ("08-11_15-20");					
+}		
 
 }
