@@ -303,8 +303,8 @@ public class AplicarIdiomas {
 			
 			AplicarIdiomas idioma = new AplicarIdiomas ("CAT", "ENG");		
 			
-		//	idioma.Rellenar_Campos_Entrada ();
-		//	idioma.Rellenar_Campos_Salida ();
+		/*	idioma.Rellenar_Campos_Entrada ();
+			idioma.Rellenar_Campos_Salida ();
 			
 			System.out.println(idioma.getAgendaE());	
 			System.out.println(idioma.getLunesE()+"-"+idioma.getMartesE()+"-"+idioma.getMiercolesE()+"-"+idioma.getJuevesE()+"-"+idioma.getViernesE()+"-"+idioma.getSabadoE()+"-"+idioma.getDomingoE());	
@@ -320,9 +320,7 @@ public class AplicarIdiomas {
 			System.out.println(idioma.getCerradoS());	
 			System.out.println(idioma.getGeneradoS());
 			System.out.println(idioma.getLS()+"-"+idioma.getMS()+"-"+idioma.getXS()+"-"+idioma.getJS()+"-"+idioma.getVS()+"-"+idioma.getSS()+"-"+idioma.getDS());	
-			
-		
-		}
+		*/}
 		
 		catch (Exception e) {
 			e.printStackTrace();
