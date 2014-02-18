@@ -68,7 +68,7 @@ public class LeerFicheroPeticiones  extends LeerFichero {
 		anyoI= Integer.parseInt(fechaInicio.split("/")[2]);
 		fInicio.clear();
 		fInicio.set(Calendar.YEAR, anyoI);
-		fInicio.set(Calendar.MONTH, mesI -1 );
+		fInicio.set(Calendar.MONTH, mesI );
 		fInicio.set(Calendar.DAY_OF_MONTH, diaI);
 		
 		/*
@@ -81,9 +81,9 @@ public class LeerFicheroPeticiones  extends LeerFichero {
 		mesF = Integer.parseInt(fechaFin.split("/")[1]);
 		anyoF= Integer.parseInt(fechaFin.split("/")[2]);
 		fFin.clear();
-		fFin.set(Calendar.YEAR, anyoI);
-		fFin.set(Calendar.MONTH, mesI -1);
-		fFin.set(Calendar.DAY_OF_MONTH, diaI);
+		fFin.set(Calendar.YEAR, anyoF);
+		fFin.set(Calendar.MONTH, mesF);
+		fFin.set(Calendar.DAY_OF_MONTH, diaF);
 		
 		/*
 		fFin.set(Integer.parseInt(fechaFin.split("/")[2]), 
