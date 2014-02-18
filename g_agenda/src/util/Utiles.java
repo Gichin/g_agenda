@@ -1,11 +1,13 @@
 package util;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Utiles {	
 
-	public static int [] Horas_Array(String Hor)	{			
+	public static int [] Horas_Array(String Hor)  throws Exception
+	{			
 				
 		String [] Parte = Hor.split("_");		
 		String [] Parte1;
@@ -54,7 +56,7 @@ public class Utiles {
 		return Arry;	
 	}
 	
-	public static void main(String[] args) {	
+	public static void main(String[] args) throws Exception {	
 			
 			Horas_Array ("08-12");
 			Horas_Array ("08-11_15-20");					
