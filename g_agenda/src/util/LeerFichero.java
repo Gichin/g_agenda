@@ -23,7 +23,7 @@ public class LeerFichero
 			         
          while ((lineafichero=buffer.readLine())!=null)
 		   	 lista.add(lineafichero);
-     		System.out.println(lista);
+     		//System.out.println(lista);
 		
 	}
 	

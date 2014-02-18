@@ -5,82 +5,109 @@ import java.util.List;
 
 import negocio.LeerFicheroConfig;
 
-public class AplicarIdiomas extends LeerFichero{
+public class AplicarIdiomas {
+	
+	//Esther	
 	
 	
-	public AplicarIdiomas (String fichero) throws IOException
+	private String [] LineaE;			
+	private String [] LineaS;
+	
+	private String []  DiasE;
+	private String []  DiasS;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	private String DiasIE;
+	private String DiasIS;
+	
+	private String MesesE;
+	private String MesesS;
+	
+	
+	
+	private String LunesE,MartesE,MiercolesE,JuevesE,ViernesE,SabadoE,DomingoE;
+	private String LunesS,MartesS,MiercolesS,JuevesS,ViernesS,SabadoS,DomingoS;
+	
+	private String LE,ME,XE,JE,VE,SE,DE;
+	private String LS,MS,XS,JS,VS,SS,DS;
+	
+	private String CerradoE;
+	private String CerradoS;
+	
+
+	private LeerFichero IdiomaE;
+	private LeerFichero IdiomaS;
+	
+	
+	public AplicarIdiomas (String idEntrada, String idSalida) throws Exception
 	{
-		super (fichero);		
-		TratarLista (super.getLista());
+		this.IdiomaE = new LeerFichero("internacional."+idEntrada);
+		this.IdiomaE.getLista();
+		this.IdiomaS = new LeerFichero("internacional."+idSalida);
+		this.IdiomaS.getLista();		
 	}
 	
 	
-	private void TratarLista (List <String> lista)
+	public void Rellenar_Campos_Entrada ()
 	{
-		String PrimLinea, dias, iniciales, tempo, gener, cerr, err;
+		String preparadaParaSplit = "";
 		
-		PrimLinea=lista.get(0);
-		dias=lista.get(1);
-		iniciales=lista.get(2);
-		tempo=lista.get(3);
-		gener=lista.get(4);
-		cerr=lista.get(5);
-		err=lista.get(6);
+		for (String linea : IdiomaE.getLista()) {
+			preparadaParaSplit += linea;
+		}		
+		System.out.println(preparadaParaSplit);		
 		
+		LineaE = preparadaParaSplit.split(";");
 		
-		Split (String PrimLinea: PrimLinea.split(",",2));
+		System.out.println(LineaE[1]);		
 		
-				String Str = new String();
-			
-				String PrimLinea=lista.get(0);
-				String[] splits = PrimLinea.split(",");
-
-				System.out.println("splits.size: " + splits.length);
-
-				for(String asset: assetClasses){
-				System.out.println(asset);
-				}
-
-
-				
-
-			      System.out.println("dias");
-			      for (String Str1: PrimLinea.split(",", 2)){
-			         System.out.println(dias);
-			      
-		
-		
-		System.out.println(iniciales);
-		System.out.println(tempo);
-		System.out.println(gener);
-		System.out.println(cerr);
-		System.out.println(err);
-		
-				
 	}
 	
-	public static void main(String[] args)
-	{
+	
+	public void Rellenar_Campos_Salida ()
+	{	
+		String preparadaParaSplit = "";
+		
+		for (String linea : IdiomaS.getLista()) {
+			preparadaParaSplit += linea;
+		}		
+		System.out.println(preparadaParaSplit);				
+	}
+	
+	
+	public static void main(String[] args)	{
 		try {
+			
+			AplicarIdiomas idioma = new AplicarIdiomas ("CAT", "ENG");		
+			idioma.Rellenar_Campos_Entrada ();
+			idioma.Rellenar_Campos_Salida ();
+
+			
+			
+		//	System.out.println(idioma.IdiomaE.getLista());
+		//	System.out.println(idioma.IdiomaS.getLista());
+			
 		
-			
-			AplicarIdiomas idioma = new AplicarIdiomas("internacional.cat");
-			
-				
-			
-			
-	//		PrimLinea=idioma.get(0);
-	//		SegundaLinea=idioma.get(1);
-			
-		} catch (IOException e) {
-			
-			e.printStackTrace();
 		}
 		
-	
-
-		
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
+
+
 	
 
 }
