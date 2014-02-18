@@ -3,15 +3,15 @@ package util;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Utiles {
-	
+public class Utiles {	
 
 	public static int [] Horas_Array(String Hor)	{		
 				
 		String [] Parte = Hor.split("_");		
 		String [] Parte1;
 		String [] Parte2;				
-		Parte1 =(Parte[0].split("-"));	
+		Parte1 =(Parte[0].split("-"));
+		
 		int horaI, horaF, horaT;
 				
 		horaI=Integer.parseInt(Parte1 [0]);
@@ -19,6 +19,8 @@ public class Utiles {
 		horaT=horaF-horaI;
 		
 		int[] iHora1 = new int[horaT];	
+	
+		
 		int[] iHora2 = null ;	
 		
 		if (horaT ==1)
@@ -99,10 +101,8 @@ public class Utiles {
 		
 		return Arry;			
 	}
-	public static void main(String[] args) {
+	public static void main(String[] args) {	
 		
-	
-	
 		Horas_Array ("08-9");
 		Horas_Array ("08-09_15-20");
 		

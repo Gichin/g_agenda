@@ -1,28 +1,18 @@
 package negocio;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
-
 import util.*;
-public class EscribeHTML extends LeerFichero{
 
-	EscribeLog Log = new EscribeLog();	
+public class EscribeHTML extends EscribirFichero {
 	
-	
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-
-	
-
-	private class EscribeLog extends EscribirFichero{
-
-		public EscribeLog() {
-			super(lista, nombreArchivo);
-			// TODO Auto-generated constructor stub
+	public EscribeHTML(List<String> lista, String nombreArchivo) throws IOException {		
+			super(lista, nombreArchivo);		
 		}
-
-	}
+	
+	
+	
 }
+
 
 
