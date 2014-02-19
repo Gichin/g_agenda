@@ -13,6 +13,12 @@ public class LeerFicheroPeticiones  extends LeerFichero {
 	private int dias;
 	private String [][] estMes; 
 	private HashMap<String, String [][]> estructura = new HashMap<>();
+	private List<String> log  = new ArrayList();
+	private String idiomaE, idiomaS ;
+	private AplicarIdiomas Trad;
+	
+	
+	
 
 	
 	private int setMaxDias(int mes, int anyo){
@@ -44,12 +50,23 @@ public class LeerFicheroPeticiones  extends LeerFichero {
 			 for (int i=0; i<inDias.length; i++){
 				 for (int x=0; x<inHoras.length; x++){
 					 // OJO Cambiar Tancat por lenguaje de entrada!!!!!!
-					 if ((auxEstMes[x][i]==null)||  (peticion.split(" ")[0] == "Tancat")){
-						 auxEstMes[x][i]= peticion.split(" ")[0];
+					 if ((auxEstMes[x][i]==null) ){
+						 int esDiaActivo = peticion.split(" ")[4].indexOf(Utiles.DiadelaSemana(i-1, this.mes, this.anyo, this.Trad)); 
+						 if (esDiaActivo != -1){
+							 if (peticion.split(" ")[0] == Trad.getCerradoE())
+							 {
+								 auxEstMes[inHoras[x]][inDias[i]-1]= Trad.getCerradoS();
+							 }else
+							 {
+								 auxEstMes[inHoras[x]][inDias[i]-1]= peticion.split(" ")[0];
+							 }
+						 }
+					 }
+					 else if  (peticion.split(" ")[0] != Trad.getCerradoE()){
+						 log.add(peticion);
 					 }
 					 
 				 }
-				 
 			 }
 			 estructura.put(peticion.split(" ")[1], auxEstMes );
 			
@@ -147,12 +164,17 @@ public class LeerFicheroPeticiones  extends LeerFichero {
 
 	}
 
-	public LeerFicheroPeticiones (String fichero, int anyo, int mes) throws Exception 
+	public LeerFicheroPeticiones (String fichero, int anyo, int mes, String idiomaE, String idiomaS) throws Exception 
 	{
 		super(fichero);
 		this.anyo= anyo;
 		this.mes = mes-1;
 		this.dias = this.setMaxDias(this.mes, this.anyo);
+		this.idiomaE = idiomaE;
+		this.idiomaS = idiomaS;
+		this.Trad = new AplicarIdiomas(this.idiomaE, this.idiomaS);
+		
+		
 		
 		TrataEntradas();
 		
@@ -160,22 +182,25 @@ public class LeerFicheroPeticiones  extends LeerFichero {
 	} 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		List<String> lista = new ArrayList<>();
-		lista.add("Tancat Sala1 01/01/2008 31/12/2008 LMCJVSG 00-07_21-24");
-		lista.add("Tancat Sala1 25/12/2008 25/12/2008 LMCJVSG 00-24");
-		lista.add("Tancat Sala1 01/01/2009 31/12/2008 G 00-24");
-		lista.add("Tancat Sala2 01/01/2008 31/12/2008 LMCJVSG 00-07_21-24");
-		lista.add("ReunioPerl Sala1 01/05/2008 31/05/2008 LMJ 12-13_17-18");
-		lista.add("ReunioPerl Sala1 01/06/2008 02/02/2008 LMCJV 14-18");
-		lista.add("ReunioPerl Sala1 01/07/2008 20/12/2008 LMJ 13-14_17-18");
-		lista.add("ReunioPerl Sala1 01/08/2008 02/02/2008 LMCJV 14-18");
-		lista.add("ReunioPerl Sala1 01/09/2008 31/12/2008 LMJ 14-15_17-18");
-		lista.add("ReunioJava Sala1 15/10/2008 20/12/2008 LMCJV 12-21");
-		lista.add("ReunioJava Sala1 25/09/2008 02/11/2008 LMCJV 14-18");
-		lista.add("ReunioJava Sala1 25/09/2008 02/11/2008 LMCJV 12-14");
+//		List<String> lista = new ArrayList<>();
+//		lista.add("Tancat Sala1 01/01/2008 31/12/2008 LMCJVSG 00-07_21-24");
+//		lista.add("Tancat Sala1 25/12/2008 25/12/2008 LMCJVSG 00-24");
+//		lista.add("Tancat Sala1 01/01/2009 31/12/2008 G 00-24");
+//		lista.add("Tancat Sala2 01/01/2008 31/12/2008 LMCJVSG 00-07_21-24");
+//		lista.add("ReunioPerl Sala1 01/05/2008 31/05/2008 LMJ 12-13_17-18");
+//		lista.add("ReunioPerl Sala1 01/06/2008 02/02/2008 LMCJV 14-18");
+//		lista.add("ReunioPerl Sala1 01/07/2008 20/12/2008 LMJ 13-14_17-18");
+//		lista.add("ReunioPerl Sala1 01/08/2008 02/02/2008 LMCJV 14-18");
+//		lista.add("ReunioPerl Sala1 01/09/2008 31/12/2008 LMJ 14-15_17-18");
+//		lista.add("ReunioJava Sala1 15/10/2008 20/12/2008 LMCJV 12-21");
+//		lista.add("ReunioJava Sala1 25/09/2008 02/11/2008 LMCJV 14-18");
+//		lista.add("ReunioJava Sala1 25/09/2008 02/11/2008 LMCJV 12-14");
 		
 		try {
-			LeerFicheroPeticiones Peticiones = new LeerFicheroPeticiones("peticions.txt", 2008, 11);
+			LeerFicheroConfig conf = new LeerFicheroConfig("config.txt");
+			
+			LeerFicheroPeticiones Peticiones = new LeerFicheroPeticiones("peticions.txt", conf.getAny(), conf.getMes(),
+					conf.getIdiomaE(),conf.getIdiomaS());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
