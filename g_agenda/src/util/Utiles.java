@@ -65,8 +65,7 @@ public class Utiles {
         ca.set(Calendar.DAY_OF_MONTH, dia);
         ca.set(Calendar.MONTH, mes );
         ca.set(Calendar.YEAR, any);	    
-        int numDia= ca.get(Calendar.DAY_OF_WEEK);
-        
+        int numDia= ca.get(Calendar.DAY_OF_WEEK);        
         char letra = 0;		
         
         switch (numDia) {
