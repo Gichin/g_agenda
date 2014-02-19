@@ -7,19 +7,23 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import util.EscribirFichero;
 
-public class EscribirIncidenciasLog {
+
+public class EscribirIncidenciasLog extends EscribirFichero{
 
 	private List<String> lista = new ArrayList<String>();
 	String nombreArchivo;
 	
-	public  EscribirIncidenciasLog(List<String> lista, String nombreArchivo) throws IOException{
+	public  EscribirIncidenciasLog(List<String> lista, String nombreArchivo) throws IOException
+	{
+			super(lista,nombreArchivo);
 		
-	PrintWriter fichero = new PrintWriter( new BufferedOutputStream(new FileOutputStream(nombreArchivo)),true);				
+	//	PrintWriter fichero = new PrintWriter( new BufferedOutputStream(new FileOutputStream(nombreArchivo)),true);				
 		
-		for (int i=0; i<lista.size(); i++)			
-		fichero.println(lista.get(i));	
-		fichero.close();
+	//	for (int i=0; i<lista.size(); i++)			
+	//	fichero.println(lista.get(i));	
+	//	fichero.close();
 
 		System.out.println("Fichero de Incidencias : " + nombreArchivo + " Se ha generado con Exito.");
 }
@@ -28,14 +32,21 @@ public class EscribirIncidenciasLog {
 		
 		List<String> list =	new ArrayList<String>() {
 			{
-				add("#Resum Activitats 11/2008"); 
+				add("#Resum Activitats -- / ----"); 
+				add("#Activitat ------");
+				add("Espai: ----- Dia: -  --------- Hora: -- - -- Conflicte con: --------");
+				add("Espai: ----- Dia: -  --------- Hora: -- - -- Conflicte con: --------");
+				add("--------> Total: 10 / 12 h assignades. (No Assignades: 4 h)");}
+			};
+				
+			EscribirIncidenciasLog Incidencias =new EscribirIncidenciasLog (list, "incidencias.log");
+			/*
+			 * add("#Resum Activitats 11/2008"); 
 				add("#Activitat ReunioC");
 				add("Espai: Sala1 Dia: X 19/11/2008 Hora: 10-11 Conflicte con: ReunioJava");
 				add("Espai: Sala1 Dia: V 21/11/2008 Hora: 10-11 Conflicte con: ReunioJava");
 				add("--------> Total: 10 / 12 h assignades. (No Assignades: 4 h)");}
-			};
-				
-			EscribirIncidenciasLog Incidencias =new EscribirIncidenciasLog (list,"incidencias.log");
+			*/
 	
 	}
 }
