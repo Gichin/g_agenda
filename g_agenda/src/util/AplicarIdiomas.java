@@ -8,7 +8,9 @@ import negocio.LeerFicheroConfig;
 public class AplicarIdiomas {
 	
 	//Esther	
-		
+
+	
+	 // ATRIBUTOS PARA IDIOMA ENTRADA 
 	
 	String Linea;	
 	private String [] LineaE;			
@@ -23,6 +25,9 @@ public class AplicarIdiomas {
 	private String CerradoE;
 	private String GeneradoE;
 
+
+	 // ATRIBUTOS PARA IDIOMA SALIDA 
+	
 	private String AgendaS;
 	private String LunesS,MartesS,MiercolesS,JuevesS,ViernesS,SabadoS,DomingoS;
 	private char LS,MS,XS,JS,VS,SS,DS;
@@ -35,6 +40,8 @@ public class AplicarIdiomas {
 	private LeerFichero IdiomaS;	
 		
 	public LeerFichero getIdiomaE() {	return IdiomaE;	}
+	
+	// METODOS GET DE IDIOMA DE ENTRADA 
 	
 	public String getLinea() 		{	return Linea;	}
 	
@@ -79,6 +86,9 @@ public class AplicarIdiomas {
 	public String getCerradoE() 	{	return CerradoE;	}
 
 	public String getGeneradoE() 	{	return GeneradoE;	}
+	
+
+	 // METODOS GET PARA IDIOMA SALIDA 
 		
 	public String[] getLineaS() 	{	return LineaS;	}
 	
@@ -306,21 +316,21 @@ public class AplicarIdiomas {
 		/*	idioma.Rellenar_Campos_Entrada ();
 			idioma.Rellenar_Campos_Salida ();
 			
-			System.out.println(idioma.getAgendaE());	
-			System.out.println(idioma.getLunesE()+"-"+idioma.getMartesE()+"-"+idioma.getMiercolesE()+"-"+idioma.getJuevesE()+"-"+idioma.getViernesE()+"-"+idioma.getSabadoE()+"-"+idioma.getDomingoE());	
-			System.out.println(idioma.getEneroE()+"-"+idioma.getFebreroE()+"-"+idioma.getMarzoE()+"-"+idioma.getAbrilE()+"-"+idioma.getMayoE()+"-"+idioma.getJunioE()+"-"+idioma.getJulioE()+"-"+idioma.getAgostoE()+"-"+idioma.getSeptiembreE()+"-"+idioma.getOctubreE()+"-"+idioma.getNoviembreE()+"-"+idioma.getDiciembreE());
-			System.out.println(idioma.getAnyE()+"-"+idioma.getMesE()+"-"+idioma.getSemE()+"-"+idioma.getDiaE());	
-			System.out.println(idioma.getCerradoE());	
-			System.out.println(idioma.getGeneradoE());
-			System.out.println(idioma.getLE()+"-"+idioma.getME()+"-"+idioma.getXE()+"-"+idioma.getJE()+"-"+idioma.getVE()+"-"+idioma.getSE()+"-"+idioma.getDE());	
+		*/	System.out.println(idioma.getAgendaE());	
 			System.out.println(idioma.getAgendaS());	
-			System.out.println(idioma.getLunesS()+"-"+idioma.getMartesS()+"-"+idioma.getMiercolesS()+"-"+idioma.getJuevesS()+"-"+idioma.getViernesS()+"-"+idioma.getSabadoS()+"-"+idioma.getDomingoS());	
-			System.out.println(idioma.getEneroS()+"-"+idioma.getFebreroS()+"-"+idioma.getMarzoS()+"-"+idioma.getAbrilS()+"-"+idioma.getMayoS()+"-"+idioma.getJunioS()+"-"+idioma.getJulioS()+"-"+idioma.getAgostoS()+"-"+idioma.getSeptiembreS()+"-"+idioma.getOctubreS()+"-"+idioma.getNoviembreS()+"-"+idioma.getDiciembreS());
-			System.out.println(idioma.getAnyS()+"-"+idioma.getMesS()+"-"+idioma.getSemS()+"-"+idioma.getDiaS());	
+			System.out.println(idioma.getCerradoE());	
 			System.out.println(idioma.getCerradoS());	
+			System.out.println(idioma.getGeneradoE());
 			System.out.println(idioma.getGeneradoS());
+			System.out.println(idioma.getLunesE()+"-"+idioma.getMartesE()+"-"+idioma.getMiercolesE()+"-"+idioma.getJuevesE()+"-"+idioma.getViernesE()+"-"+idioma.getSabadoE()+"-"+idioma.getDomingoE());	
+			System.out.println(idioma.getLunesS()+"-"+idioma.getMartesS()+"-"+idioma.getMiercolesS()+"-"+idioma.getJuevesS()+"-"+idioma.getViernesS()+"-"+idioma.getSabadoS()+"-"+idioma.getDomingoS());	
+			System.out.println(idioma.getEneroE()+"-"+idioma.getFebreroE()+"-"+idioma.getMarzoE()+"-"+idioma.getAbrilE()+"-"+idioma.getMayoE()+"-"+idioma.getJunioE()+"-"+idioma.getJulioE()+"-"+idioma.getAgostoE()+"-"+idioma.getSeptiembreE()+"-"+idioma.getOctubreE()+"-"+idioma.getNoviembreE()+"-"+idioma.getDiciembreE());
+			System.out.println(idioma.getEneroS()+"-"+idioma.getFebreroS()+"-"+idioma.getMarzoS()+"-"+idioma.getAbrilS()+"-"+idioma.getMayoS()+"-"+idioma.getJunioS()+"-"+idioma.getJulioS()+"-"+idioma.getAgostoS()+"-"+idioma.getSeptiembreS()+"-"+idioma.getOctubreS()+"-"+idioma.getNoviembreS()+"-"+idioma.getDiciembreS());
+			System.out.println(idioma.getAnyE()+"-"+idioma.getMesE()+"-"+idioma.getSemE()+"-"+idioma.getDiaE());	
+			System.out.println(idioma.getAnyS()+"-"+idioma.getMesS()+"-"+idioma.getSemS()+"-"+idioma.getDiaS());	
+			System.out.println(idioma.getLE()+"-"+idioma.getME()+"-"+idioma.getXE()+"-"+idioma.getJE()+"-"+idioma.getVE()+"-"+idioma.getSE()+"-"+idioma.getDE());	
 			System.out.println(idioma.getLS()+"-"+idioma.getMS()+"-"+idioma.getXS()+"-"+idioma.getJS()+"-"+idioma.getVS()+"-"+idioma.getSS()+"-"+idioma.getDS());	
-		*/}
+					}
 		
 		catch (Exception e) {
 			e.printStackTrace();

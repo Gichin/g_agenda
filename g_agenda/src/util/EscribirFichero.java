@@ -55,11 +55,11 @@ import javax.activation.MailcapCommandMap;
 				
 				List<String> listaPepito =				
 						
-						new ArrayList<String>() {{ add("probando el bucle"); add("#Activitat ReunioC");add("Espai: Sala1 Dia: X 19/11/2008 Hora: 10-11 Conflicte con: ReunioJava");add("Espai: Sala1 Dia: V 21/11/2008 Hora: 10-11 Conflicte con: ReunioJava");add("ultima entrada");}};
+						new ArrayList<String>() {{ add("Primera entrada"); add("dos");add("tres");add("cuatro");add("ultima entrada");}};
 				
 				
-				EscribirFichero fichePepito=new EscribirFichero (listaPepito,"incidencias.log");
-				System.out.println(fichePepito);
+			//	EscribirFichero fichePepito=new EscribirFichero (listaPepito,"incidencias.log");
+			//	System.out.println(fichePepito);
 			}
 			
 	}

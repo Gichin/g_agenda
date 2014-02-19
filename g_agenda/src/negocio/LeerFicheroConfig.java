@@ -20,8 +20,7 @@ public class LeerFicheroConfig extends LeerFichero
 	public int getMes() 			{	return mes;			}
 	public String getIdiomaE() 		{	return idiomaE;		}
 	public String getIdiomaS() 		{	return idiomaS;		}
-	
-	
+		
 
 	public LeerFicheroConfig (String fichero) throws IOException
 	{
