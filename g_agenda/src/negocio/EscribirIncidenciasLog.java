@@ -7,7 +7,6 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import util.EscribirFichero;
 
 public class EscribirIncidenciasLog {
 
@@ -15,8 +14,6 @@ public class EscribirIncidenciasLog {
 	String nombreArchivo;
 	
 	public  EscribirIncidenciasLog(List<String> lista, String nombreArchivo) throws IOException{
-		this.lista=lista;
-		this.nombreArchivo=nombreArchivo;								
 		
 	PrintWriter fichero = new PrintWriter( new BufferedOutputStream(new FileOutputStream(nombreArchivo)),true);				
 		
@@ -24,22 +21,21 @@ public class EscribirIncidenciasLog {
 		fichero.println(lista.get(i));	
 		fichero.close();
 
-		System.out.println("Fichero " + nombreArchivo + " generado.");
+		System.out.println("Fichero de Incidencias : " + nombreArchivo + " Se ha generado con Exito.");
 }
 	
 	public static void main(String[] args) throws IOException {
 		
 		List<String> list =	new ArrayList<String>() {
 			{
-				add("probando el bucle"); 
+				add("#Resum Activitats 11/2008"); 
 				add("#Activitat ReunioC");
 				add("Espai: Sala1 Dia: X 19/11/2008 Hora: 10-11 Conflicte con: ReunioJava");
 				add("Espai: Sala1 Dia: V 21/11/2008 Hora: 10-11 Conflicte con: ReunioJava");
-				add("ultima entrada");}
+				add("--------> Total: 10 / 12 h assignades. (No Assignades: 4 h)");}
 			};
-		
-		
-		EscribirFichero fichePepito=new EscribirFichero (list,"incidencias.log");
-		System.out.println(fichePepito);
+				
+			EscribirIncidenciasLog Incidencias =new EscribirIncidenciasLog (list,"incidencias.log");
+	
 	}
 }
