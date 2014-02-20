@@ -49,10 +49,10 @@ public class LeerFicheroConfig extends LeerFichero
 			
 			e.printStackTrace();
 		}
-		System.out.println(fiCon.any);
+/*		System.out.println(fiCon.any);
 		System.out.println(fiCon.mes);
 		System.out.println(fiCon.idiomaE);
-		System.out.println(fiCon.idiomaS);
+		System.out.println(fiCon.idiomaS);  */
 
 	}
 	

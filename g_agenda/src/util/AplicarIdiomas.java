@@ -316,7 +316,7 @@ public class AplicarIdiomas {
 		/*	idioma.Rellenar_Campos_Entrada ();
 			idioma.Rellenar_Campos_Salida ();
 			
-		*/	System.out.println(idioma.getAgendaE());	
+		*//*	System.out.println(idioma.getAgendaE());	
 			System.out.println(idioma.getAgendaS());	
 			System.out.println(idioma.getCerradoE());	
 			System.out.println(idioma.getCerradoS());	
@@ -330,7 +330,7 @@ public class AplicarIdiomas {
 			System.out.println(idioma.getAnyS()+"-"+idioma.getMesS()+"-"+idioma.getSemS()+"-"+idioma.getDiaS());	
 			System.out.println(idioma.getLE()+"-"+idioma.getME()+"-"+idioma.getXE()+"-"+idioma.getJE()+"-"+idioma.getVE()+"-"+idioma.getSE()+"-"+idioma.getDE());	
 			System.out.println(idioma.getLS()+"-"+idioma.getMS()+"-"+idioma.getXS()+"-"+idioma.getJS()+"-"+idioma.getVS()+"-"+idioma.getSS()+"-"+idioma.getDS());	
-					}
+				*/	}
 		
 		catch (Exception e) {
 			e.printStackTrace();

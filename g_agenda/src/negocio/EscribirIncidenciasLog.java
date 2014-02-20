@@ -5,25 +5,25 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import util.EscribirFichero;
 
 
-public class EscribirIncidenciasLog extends EscribirFichero{
+public class EscribirIncidenciasLog {// extends EscribirFichero{
 
 	private List<String> lista = new ArrayList<String>();
 	String nombreArchivo;
 	
-	public  EscribirIncidenciasLog(List<String> lista, String nombreArchivo) throws IOException
+	public  EscribirIncidenciasLog(List<String> lista, String nombreArchivo, HashMap <String, String[][]> estructura) throws IOException
 	{
-			super(lista,nombreArchivo);
+		//	super(lista,nombreArchivo);
 		
-	//	PrintWriter fichero = new PrintWriter( new BufferedOutputStream(new FileOutputStream(nombreArchivo)),true);				
-		
-	//	for (int i=0; i<lista.size(); i++)			
-	//	fichero.println(lista.get(i));	
-	//	fichero.close();
+		PrintWriter fichero = new PrintWriter( new BufferedOutputStream(new FileOutputStream(nombreArchivo)),true);			
+		for (int i=0; i<lista.size(); i++)			
+		fichero.println(lista.get(i));	
+		fichero.close();
 
 		System.out.println("Fichero de Incidencias : " + nombreArchivo + " Se ha generado con Exito.");
 }
@@ -39,7 +39,9 @@ public class EscribirIncidenciasLog extends EscribirFichero{
 				add("--------> Total: 10 / 12 h assignades. (No Assignades: 4 h)");}
 			};
 				
-			EscribirIncidenciasLog Incidencias =new EscribirIncidenciasLog (list, "incidencias.log");
+			
+			//EscribirIncidenciasLog Incidencias =new EscribirIncidenciasLog (list, "incidencias.log", LeerFicheroPeticiones.getEstructura);
+		
 			/*
 			 * add("#Resum Activitats 11/2008"); 
 				add("#Activitat ReunioC");
