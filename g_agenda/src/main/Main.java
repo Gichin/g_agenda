@@ -15,7 +15,7 @@ public class Main {
 			
 			LeerFicheroPeticiones Peticiones = new LeerFicheroPeticiones("peticions.txt", conf.getAny(), conf.getMes(),
 					conf.getIdiomaE(),conf.getIdiomaS());
-			EscribirIncidenciasLog Log = new EscribirIncidenciasLog(Peticiones.getLog(), "incidencias.log");
+			EscribirIncidenciasLog Log = new EscribirIncidenciasLog(Peticiones.getLog(), "incidencias.log",Peticiones.getEstructura());
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

@@ -13,12 +13,15 @@ public class LeerFicheroPeticiones  extends LeerFichero {
 	private String [][] estMes; 
 	private HashMap<String, String [][]> estructura = new HashMap<>();
 	private List<String> log  = new ArrayList();
-	public List<String> getLog() {
-		return log;
-	}
 	private String idiomaE, idiomaS ;
 	private AplicarIdiomas Trad;
 	
+	public List<String> getLog() {
+		return log;
+	}
+	public HashMap<String, String[][]> getEstructura() {
+		return estructura;
+	}
 	
 	
 
@@ -36,7 +39,7 @@ public class LeerFicheroPeticiones  extends LeerFichero {
 		 int inDias[];
 		 int inHoras[];
 		 String dentroMes, comp1, comp2;
-		 
+		 int totalHorasAsignadas, totalHoras, totalError =0;
 		 
 		 
 		 
@@ -45,8 +48,8 @@ public class LeerFicheroPeticiones  extends LeerFichero {
 			 
 			 if (dentroMes.equals("si") ) {
 //				 System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
- 			 System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
- 				 System.out.println("Petición: " + peticion.toString());
+// 			 System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+// 				 System.out.println("Petición: " + peticion.toString());
 //				 System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 //				 System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 
@@ -111,6 +114,8 @@ public class LeerFicheroPeticiones  extends LeerFichero {
 
 	
 	
+
+
 	private String DentroMes (String fechaInicio, String fechaFin) {
 		Calendar fInicio = Calendar.getInstance();
 		Calendar fFin = Calendar.getInstance();
@@ -183,8 +188,6 @@ public class LeerFicheroPeticiones  extends LeerFichero {
 
 		
 		int compara;
-		int indice = 0;
-		int uBound = 0;
 		ArrayList<Integer> dias = new ArrayList<Integer>();
 		compara = fInicio.compareTo(fFin);
 
@@ -225,19 +228,11 @@ public class LeerFicheroPeticiones  extends LeerFichero {
 		
 		
 		TrataEntradas();
-//		String [][]  auxEstMes;
-//		
-//		for (Map.Entry entry : estructura.entrySet()) {
-//			
-//		    System.out.println(entry.getKey() + ", ");
-//		    auxEstMes = (String[][]) entry.getValue();
-//		    System.out.println(Arrays.deepToString(auxEstMes));
-//		    
-//		}
-
 		
 		
 	} 
+	
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 //		List<String> lista = new ArrayList<>();
