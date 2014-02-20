@@ -33,47 +33,118 @@ public class LeerFicheroPeticiones  extends LeerFichero {
 		 String[][] auxEstMes;
 		 int inDias[];
 		 int inHoras[];
-		
+		 String dentroMes, comp1, comp2;
+		 
+		 
+		 
+		 
 		 for (String peticion : lista) {
+			 dentroMes = DentroMes (peticion.split(" ")[2], peticion.split(" ")[3]);
 			 
-			 auxEstMes = estructura.get(peticion.split(" ")[1]);
-			 if (auxEstMes == null) {
-				 auxEstMes = new String[24][this.dias] ;
-			 }
-			 
-			 //trato la petición -- void()
-			 inDias = new int[(TratarFechas2 (peticion.split(" ")[2], peticion.split(" ")[3])).length];
-			 inDias = TratarFechas2 (peticion.split(" ")[2], peticion.split(" ")[3]);			 
-			 inHoras = new int[(Utiles.Horas_Array(peticion.split(" ")[5])).length];
-			 inHoras = Utiles.Horas_Array(peticion.split(" ")[5]);
-			 
-			 for (int i=0; i<inDias.length; i++){
-				 for (int x=0; x<inHoras.length; x++){
-					 // OJO Cambiar Tancat por lenguaje de entrada!!!!!!
-					 if ((auxEstMes[x][i]==null) ){
-						 int esDiaActivo = peticion.split(" ")[4].indexOf(Utiles.DiadelaSemana(i-1, this.mes, this.anyo, this.Trad)); 
-						 if (esDiaActivo != -1){
-							 if (peticion.split(" ")[0] == Trad.getCerradoE())
-							 {
-								 auxEstMes[inHoras[x]][inDias[i]-1]= Trad.getCerradoS();
-							 }else
-							 {
-								 auxEstMes[inHoras[x]][inDias[i]-1]= peticion.split(" ")[0];
-							 }
-						 }
-					 }
-					 else if  (peticion.split(" ")[0] != Trad.getCerradoE()){
-						 log.add(peticion);
-					 }
-					 
+			 if (dentroMes == "si") {
+				 
+				 
+				 auxEstMes = estructura.get(peticion.split(" ")[1]);
+				 if (auxEstMes == null) {
+					 auxEstMes = new String[24][this.dias] ;
 				 }
+				 
+				 //trato la petición -- void()
+				 inDias = new int[(TratarFechas (peticion.split(" ")[2], peticion.split(" ")[3])).length];
+				 inDias = TratarFechas (peticion.split(" ")[2], peticion.split(" ")[3]);			 
+				 inHoras = new int[(Utiles.Horas_Array(peticion.split(" ")[5])).length];
+				 inHoras = Utiles.Horas_Array(peticion.split(" ")[5]);
+		
+				 
+				 
+				 for (int i=0; i<(inDias.length-1); i++)
+				 {
+					 int esDiaActivo = peticion.split(" ")[4].indexOf(Utiles.DiadelaSemana((inDias[i]), this.mes, this.anyo, this.Trad));
+					 System.out.println("Día " + (inDias[i])+ "/"+ this.mes + "/" +this.anyo + 
+							 " esDiActivo: "+ esDiaActivo +  " en " + peticion.split(" ")[4] + "/n");
+					 if (esDiaActivo != -1){
+
+					 
+					 
+						 for (int x=0; x<inHoras.length; x++){
+							 // OJO Cambiar Tancat por lenguaje de entrada!!!!!!
+							 comp1 = peticion.split(" ")[0];
+							 comp2 = Trad.getCerradoE();
+							 
+							 if ((auxEstMes[x][i]==null) ){
+								 
+									 
+									 if (comp1.equals(comp2))
+									 //if (peticion.split(" ")[0] == Trad.getCerradoE())
+									 {
+										 System.out.println("Dia " + (inDias[i]) +  "Hora " + inHoras[x] + Trad.getCerradoS() );
+										 auxEstMes[inHoras[x]][inDias[i]]= Trad.getCerradoS();
+									 }
+									 else
+									 {
+										 System.out.println("Dia " + (inDias[i]) +  "Hora " + inHoras[x] + peticion.split(" ")[0]);
+										 auxEstMes[inHoras[x]][inDias[i]]= peticion.split(" ")[0];
+									 }
+								 
+							 }
+							 //(peticion.split(" ")[0] != Trad.getCerradoE()){
+							 else if  (  !(comp1.equals(comp2)) ) {
+								 log.add(peticion);
+							 }
+						 }//for horas	 
+					 }//If Dia Activo
+				 }//for Dias
+				 estructura.put(peticion.split(" ")[1], auxEstMes );
 			 }
-			 estructura.put(peticion.split(" ")[1], auxEstMes );
+		 }
+	}
+	
+	
+	private String DentroMes (String fechaInicio, String fechaFin) {
+		Calendar fInicio = Calendar.getInstance();
+		Calendar fFin = Calendar.getInstance();
+		int diaI, mesI, anyoI, diaF, mesF, anyoF = 0;
+		
+		diaI = Integer.parseInt(fechaInicio.split("/")[0]);
+		mesI = Integer.parseInt(fechaInicio.split("/")[1]);
+		anyoI= Integer.parseInt(fechaInicio.split("/")[2]);
+		fInicio.clear();
+		fInicio.set(Calendar.YEAR, anyoI);
+		fInicio.set(Calendar.MONTH, mesI-1);
+		fInicio.set(Calendar.DAY_OF_MONTH, diaI);
+
+		
+		diaF = Integer.parseInt(fechaFin.split("/")[0]);
+		mesF = Integer.parseInt(fechaFin.split("/")[1]);
+		anyoF= Integer.parseInt(fechaFin.split("/")[2]);
+		fFin.clear();
+		fFin.set(Calendar.YEAR, anyoF);
+		fFin.set(Calendar.MONTH, mesF-1);
+		fFin.set(Calendar.DAY_OF_MONTH, diaF);
+		int inicio, fin, aInicio, aFin = 0;
+		inicio = fInicio.get(Calendar.MONTH);
+		fin = fFin.get(Calendar.MONTH);
+		aInicio = fInicio.get(Calendar.YEAR);
+		aFin = fFin.get(Calendar.YEAR);
+		
+		
+		if ((inicio <= this.mes) &&	(this.mes <= fin) 
+				&& (aInicio <= this.anyo) && (this.anyo <= aFin)) {
+			return "si";
 			
 		}
+		else
+		{
+			return "no";
+		}
+				
+				
+				
+		
 	}
+	
 
-	private int[] TratarFechas2(String fechaInicio, String fechaFin) {
+	private int[] TratarFechas(String fechaInicio, String fechaFin) {
 		
 		
 		Calendar fInicio = Calendar.getInstance();
@@ -130,39 +201,6 @@ public class LeerFicheroPeticiones  extends LeerFichero {
 
 		
 				
-
-	private int[] TratarFechas(String fechaInicio, String fechaFin) {
-		int [] indiceDias= null;
-		int diaInicio = Integer.parseInt(fechaInicio.split("/")[0]);
-		int mesInicio = Integer.parseInt(fechaInicio.split("/")[1]);
-		int diaFinal = Integer.parseInt(fechaFin.split("/")[0]);
-		int mesFinal = Integer.parseInt(fechaFin.split("/")[1]);
-		
-		if (mesInicio <= this.mes){
-			if (mesFinal == this.mes){
-				indiceDias = new int[diaFinal-diaInicio];
-				for(int i =0; i <= (diaFinal-diaInicio);i++){
-					indiceDias[i] = diaInicio + i;
-				}
-			}
-			else if (mesFinal>=this.mes){
-				indiceDias = new int[diaFinal-diaInicio];
-				for(int i =0; i <= (diaFinal-diaInicio);i++){
-					indiceDias[i] = diaInicio + i;
-				}
-			}
-			else if ((mesFinal <= this.mes) || (this.mes == 12)){
-					indiceDias = new int[this.dias-diaInicio];
-					for(int i =0; i <= (this.dias-diaInicio);i++){
-						indiceDias[i] = diaInicio + i;
-					}
-			}
-		}
-		
-		
-		return indiceDias;
-
-	}
 
 	public LeerFicheroPeticiones (String fichero, int anyo, int mes, String idiomaE, String idiomaS) throws Exception 
 	{
