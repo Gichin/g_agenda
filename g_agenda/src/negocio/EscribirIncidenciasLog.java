@@ -13,16 +13,33 @@ import util.EscribirFichero;
 
 public class EscribirIncidenciasLog {// extends EscribirFichero{
 
-	private List<String> lista = new ArrayList<String>();
+	private List<String> listaInci = new ArrayList<String>();
 	String nombreArchivo;
+	private int anyI, mesI;
 	
-	public  EscribirIncidenciasLog(List<String> lista, String nombreArchivo, HashMap <String, String[][]> estructura) throws IOException
+	public  EscribirIncidenciasLog(List<String> lista, String nombreArchivo, HashMap <String, String[][]> estructura, int any, int mes) throws IOException
 	{
 		//	super(lista,nombreArchivo);
 		
+		
+		mesI=mes;
+		anyI=any;
+		
+		listaInci =	new ArrayList<String>() {
+			{
+				add("#Resum Activitats " + mesI+ "/" +anyI); 
+				add("#Activitat ------");
+				add("Espai: ----- Dia: -  --------- Hora: -- - -- Conflicte con: --------");
+				add("Espai: ----- Dia: -  --------- Hora: -- - -- Conflicte con: --------");
+				add("--------> Total: 10 / 12 h assignades. (No Assignades: 4 h)");}
+			};
+		
+	
+		
+		
 		PrintWriter fichero = new PrintWriter( new BufferedOutputStream(new FileOutputStream(nombreArchivo)),true);			
-		for (int i=0; i<lista.size(); i++)			
-		fichero.println(lista.get(i));	
+		for (int i=0; i<listaInci.size(); i++)			
+		fichero.println(listaInci.get(i));	
 		fichero.close();
 
 		System.out.println("Fichero de Incidencias : " + nombreArchivo + " Se ha generado con Exito.");
@@ -40,7 +57,9 @@ public class EscribirIncidenciasLog {// extends EscribirFichero{
 			};
 				
 			
-			//EscribirIncidenciasLog Incidencias =new EscribirIncidenciasLog (list, "incidencias.log", LeerFicheroPeticiones.getEstructura);
+		//	LeerFicheroPeticiones Pet =new LeerFIcheroPeticiones ("peticions.txt", int anyo, int mes, String idiomaE, String idiomaS);
+			
+	//		EscribirIncidenciasLog Incidencias =new EscribirIncidenciasLog (list, "incidencias.log", LeerFicheroPeticiones.  );
 		
 			/*
 			 * add("#Resum Activitats 11/2008"); 

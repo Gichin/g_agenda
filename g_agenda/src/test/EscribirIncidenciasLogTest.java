@@ -24,7 +24,7 @@ public class EscribirIncidenciasLogTest {
 			
 			list.add("#Resum Activitats 11/2008"); 	
 			
-		EscribirIncidenciasLog Incidencias =new EscribirIncidenciasLog (list,"");
+//		EscribirIncidenciasLog Incidencias =new EscribirIncidenciasLog (list,"");
 	}
 	
 	
@@ -34,6 +34,6 @@ public class EscribirIncidenciasLogTest {
 	{	
 		List<String> list =	new ArrayList<String>();
 				
-		EscribirIncidenciasLog Incidencias =new EscribirIncidenciasLog (list,"incidencias.log");
+//		EscribirIncidenciasLog Incidencias =new EscribirIncidenciasLog (list,"incidencias.log");
 	}
 }
