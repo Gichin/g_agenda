@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import util.EscribirFichero;
+import negocio.LeerFicheroPeticiones;
 
 
 public class EscribirIncidenciasLog {// extends EscribirFichero{
@@ -41,8 +42,14 @@ public class EscribirIncidenciasLog {// extends EscribirFichero{
 		for (int i=0; i<listaInci.size(); i++)			
 		fichero.println(listaInci.get(i));	
 		fichero.close();
-
+		
 		System.out.println("Fichero de Incidencias : " + nombreArchivo + " Se ha generado con Exito.");
+		
+		System.out.println(estructura.get("Sala1"));
+		
+	//	estructura.getauxEstMes[inHoras[0]][inDias[0]];
+		
+		
 }
 	
 	public static void main(String[] args) throws IOException {
