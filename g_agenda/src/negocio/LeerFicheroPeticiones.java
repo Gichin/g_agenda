@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
-
 import util.*;
 public class LeerFicheroPeticiones  extends LeerFichero {
 
@@ -14,6 +13,9 @@ public class LeerFicheroPeticiones  extends LeerFichero {
 	private String [][] estMes; 
 	private HashMap<String, String [][]> estructura = new HashMap<>();
 	private List<String> log  = new ArrayList();
+	public List<String> getLog() {
+		return log;
+	}
 	private String idiomaE, idiomaS ;
 	private AplicarIdiomas Trad;
 	
@@ -41,9 +43,15 @@ public class LeerFicheroPeticiones  extends LeerFichero {
 		 for (String peticion : lista) {
 			 dentroMes = DentroMes (peticion.split(" ")[2], peticion.split(" ")[3]);
 			 
-			 if (dentroMes == "si") {
-				 
-				 
+			 if (dentroMes.equals("si") ) {
+//				 System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+ 			 System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+ 				 System.out.println("Petición: " + peticion.toString());
+//				 System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+//				 System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+
+ 				 
+ 				 
 				 auxEstMes = estructura.get(peticion.split(" ")[1]);
 				 if (auxEstMes == null) {
 					 auxEstMes = new String[24][this.dias] ;
@@ -60,29 +68,29 @@ public class LeerFicheroPeticiones  extends LeerFichero {
 				 for (int i=0; i<(inDias.length-1); i++)
 				 {
 					 int esDiaActivo = peticion.split(" ")[4].indexOf(Utiles.DiadelaSemana((inDias[i]), this.mes, this.anyo, this.Trad));
-					 System.out.println("Día " + (inDias[i])+ "/"+ this.mes + "/" +this.anyo + 
-							 " esDiActivo: "+ esDiaActivo +  " en " + peticion.split(" ")[4] + "/n");
+//					 System.out.println("Día " + (inDias[i])+ "/"+ this.mes + "/" +this.anyo + 
+//							 " esDiActivo: "+ esDiaActivo +  " en " + peticion.split(" ")[4] );
 					 if (esDiaActivo != -1){
 
 					 
-					 
+						
 						 for (int x=0; x<inHoras.length; x++){
 							 // OJO Cambiar Tancat por lenguaje de entrada!!!!!!
 							 comp1 = peticion.split(" ")[0];
 							 comp2 = Trad.getCerradoE();
-							 
-							 if ((auxEstMes[x][i]==null) ){
+//							 System.out.println("x "+ x + " i "+ i + " Valor " + auxEstMes[inHoras[x]][inDias[i]]);
+							 if ((auxEstMes[inHoras[x]][inDias[i]]==null) ){
 								 
 									 
 									 if (comp1.equals(comp2))
 									 //if (peticion.split(" ")[0] == Trad.getCerradoE())
 									 {
-										 System.out.println("Dia " + (inDias[i]) +  "Hora " + inHoras[x] + Trad.getCerradoS() );
+									 System.out.println("Dia " + (inDias[i]) +  "Hora " + inHoras[x] + " " +  Trad.getCerradoS() );
 										 auxEstMes[inHoras[x]][inDias[i]]= Trad.getCerradoS();
 									 }
 									 else
 									 {
-										 System.out.println("Dia " + (inDias[i]) +  "Hora " + inHoras[x] + peticion.split(" ")[0]);
+										 System.out.println("Dia " + (inDias[i]) +  "Hora " + inHoras[x] + " " + peticion.split(" ")[0]);
 										 auxEstMes[inHoras[x]][inDias[i]]= peticion.split(" ")[0];
 									 }
 								 
@@ -90,6 +98,7 @@ public class LeerFicheroPeticiones  extends LeerFichero {
 							 //(peticion.split(" ")[0] != Trad.getCerradoE()){
 							 else if  (  !(comp1.equals(comp2)) ) {
 								 log.add(peticion);
+								 System.out.println("Log Conflicto!!!  Dia " + (inDias[i]) +  "Hora " + inHoras[x] + " " + peticion.split(" ")[0]);
 							 }
 						 }//for horas	 
 					 }//If Dia Activo
@@ -97,7 +106,9 @@ public class LeerFicheroPeticiones  extends LeerFichero {
 				 estructura.put(peticion.split(" ")[1], auxEstMes );
 			 }
 		 }
-	}
+		
+		}
+
 	
 	
 	private String DentroMes (String fechaInicio, String fechaFin) {
@@ -182,7 +193,6 @@ public class LeerFicheroPeticiones  extends LeerFichero {
 				
 				if ((fInicio.get(Calendar.MONTH) == this.mes) && (fInicio.get(Calendar.YEAR) == this.anyo)){
 					dias.add((Integer)fInicio.get(Calendar.DAY_OF_MONTH));
-					System.out.println(fInicio.getTime());
 				}
 				
 				fInicio.add(Calendar.DAY_OF_MONTH, 1);
@@ -215,6 +225,16 @@ public class LeerFicheroPeticiones  extends LeerFichero {
 		
 		
 		TrataEntradas();
+//		String [][]  auxEstMes;
+//		
+//		for (Map.Entry entry : estructura.entrySet()) {
+//			
+//		    System.out.println(entry.getKey() + ", ");
+//		    auxEstMes = (String[][]) entry.getValue();
+//		    System.out.println(Arrays.deepToString(auxEstMes));
+//		    
+//		}
+
 		
 		
 	} 
@@ -233,12 +253,13 @@ public class LeerFicheroPeticiones  extends LeerFichero {
 //		lista.add("ReunioJava Sala1 15/10/2008 20/12/2008 LMCJV 12-21");
 //		lista.add("ReunioJava Sala1 25/09/2008 02/11/2008 LMCJV 14-18");
 //		lista.add("ReunioJava Sala1 25/09/2008 02/11/2008 LMCJV 12-14");
-		
+
 		try {
 			LeerFicheroConfig conf = new LeerFicheroConfig("config.txt");
 			
 			LeerFicheroPeticiones Peticiones = new LeerFicheroPeticiones("peticions.txt", conf.getAny(), conf.getMes(),
 					conf.getIdiomaE(),conf.getIdiomaS());
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
