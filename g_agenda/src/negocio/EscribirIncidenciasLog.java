@@ -13,101 +13,97 @@ import java.util.Map.Entry;
 public class EscribirIncidenciasLog {// extends EscribirFichero{
 
 	private List<String> listaInci = new ArrayList<String>();
+	private List<String> listaInciOrd = new ArrayList<String>();
 	String nombreArchivo;
-	private int anyI, mesI, iHoras;
+	private int anyI, mesI;
 	String [] Linea;
 	String slineas;
+	
+	private String  Thoras;
+	
 
-	String Actividad, Sala, fInicio,ffinal, hora;
+	String   Actividad1, Sala, dia, Actividad2;
+	int  Asignadas;
 
 	
 	
 	public  EscribirIncidenciasLog(List<String> lista, String nombreArchivo, HashMap <String, String[][]> estructura, int any, int mes) throws IOException
 	{
-		//	super(lista,nombreArchivo);
+		//	super(lista,nombreArchivo);		
+		mesI=mes;
+		anyI=any;	
+		int iHoras = 0;
+		int Total;	
 		
 		
-		// 		ReunioPerl Sala1 01/09/2008 31/12/2008 LMJ 14-15_17-18
-		
-		for (int i=0; i<lista.size(); i++)			
-		slineas = lista.get(i);
-		Linea= slineas.split(" ");
-		
-		Actividad 	= Linea[0];
-		Sala  		= Linea[1];
-		fInicio		= Linea[2];
-		ffinal		= Linea[3];
-		hora		= Linea[5];
+		for (int i=0; i<lista.size(); i++)		{
+			slineas = lista.get(i);
+			Linea= slineas.split(" ");				
+			
+			Actividad1 	= Linea[0];
+			
+			int hora1, hora2;
+			hora1		= Integer.parseInt(Linea[8]);
+			hora2=hora1+1;
+			
+			if (i==0){
 				
-		System.out.println(Actividad + " " + Sala);
-						
+				listaInciOrd.add("# Resum Activitats :\t" + mesI+ "/" +anyI);
+				listaInciOrd.add("# Activitat  :\t\t\t" + Actividad1);
+				listaInciOrd.add("");				
+				listaInciOrd.add("Espai:   " + Linea[1] +"   Dia:   "+Linea[10]+ " - " +  Linea[7] + "/" + mesI +"/" + anyI +"\t   Hora:   "+ hora1 +"-" + hora2 +" \tConflicte con: \t" +  Linea[6]);
+			}
+			
+			if ((i>0) && (Actividad1.equals(lista.get(i-1).split(" ")[0])))				
+			{
+				
+				iHoras++;
+				Asignadas=Integer.parseInt(Linea[9])-iHoras;
+				listaInciOrd.add("Espai:   " + Linea[1] +"   Dia:   "+Linea[10]+ " - " +  Linea[7] + "/" + mesI +"/" + anyI +"\t   Hora:   "+ hora1 +"-" + hora2 +" \tConflicte con: \t" +  Linea[6]);
+				
+			}
+			else if (i==0){}
+			else
+			{							
+				Total=Asignadas+iHoras ;		
+				listaInciOrd.add("");			
+				listaInciOrd.add("--------> Total: "+ Asignadas +" / "+ Total +" h assignades. (No Assignades:  " + iHoras + "  horas)");
+				iHoras = 1;
+				listaInciOrd.add("");
+				listaInciOrd.add("# Resum Activitats :\t" + mesI+ "/" +anyI);
+				listaInciOrd.add("# Activitat  :\t\t\t" + Actividad1);
+				listaInciOrd.add("");
+			}
+			
+		}
+		Total=Asignadas+iHoras ;
+		listaInciOrd.add("");			
+		listaInciOrd.add("--------> Total: "+ Asignadas +" / "+ Total +" h assignades. (No Assignades:  " + iHoras + "  horas)");
+
+		
 			
 		PrintWriter fichero = new PrintWriter( new BufferedOutputStream(new FileOutputStream(nombreArchivo)),true);			
 		
-		for (int i=0; i<lista.size(); i++)			
-			fichero.println(lista.get(i));	
-			mesI=mes;
-			anyI=any;	
-			iHoras=lista.size();
-			
-			listaInci =	new ArrayList<String>() {
-				{
-					add("#Resum Activitats " + mesI+ "/" +anyI); 
-				
-					add("#Activitat ------");
-					add("Espai: ----- Dia: -  --------- Hora: -- - -- Conflicte con: --------");
-					add("Espai: ----- Dia: -  --------- Hora: -- - -- Conflicte con: --------");
-					add("--------> Total: 10 / 12 h assignades. (No Assignades:  " + iHoras + "  horas)");}
-				};
-				
-		for (int i=0; i<listaInci.size(); i++)			
-			fichero.println(listaInci.get(i));	
-			
-			
 		
-			
-		fichero.close();
-		
-		System.out.println("Fichero de Incidencias : " + nombreArchivo + " Se ha generado con Exito.");		
+			for (int i=0; i<listaInciOrd.size(); i++)			
+			fichero.println(listaInciOrd.get(i));	
 	
-		
-		//System.out.println(estructura.get("Sala1"));
-		
-		
-		for (Entry <String, String[][]> m : estructura.entrySet()){
+			Thoras      = Linea[9];
+			Asignadas = Integer.parseInt(Thoras) - iHoras;
 			
-			System.out.println("Desde EscribirIncidenciasLog : " + m.getKey()+ " - " + m.getValue()[1][2]);
-		}
-		
+	//		fichero.println("");			
+	//		fichero.println("--------> Total: "+ Asignadas +" / "+ Thoras +" h assignades. (No Assignades:  " + iHoras + "  horas)");
 			
-	//	estructura.getauxEstMes[inHoras[0]][inDias[0]];
-		
+			fichero.close();			
+				
+	//		System.out.println("Espai: " + Sala +" Dia: "+Linea[10]+ " " + dia + "/" + mesI +"/" + anyI +" Hora: "+ hora1 +"-" + hora2 +" Conflicte con: " +  Actividad2);
+			
+					
+		PrintWriter fichero2 = new PrintWriter( new BufferedOutputStream(new FileOutputStream("incidencias2.log")),true);
+			
+			for (int i=0; i<lista.size(); i++)			
+			fichero2.println(lista.get(i));		
 		
 }
 	
-	public static void main(String[] args) throws IOException {
-		
-		List<String> list =	new ArrayList<String>() {
-			{
-				add("#Resum Activitats -- / ----"); 
-				add("#Activitat ------");
-				add("Espai: ----- Dia: -  --------- Hora: -- - -- Conflicte con: --------");
-				add("Espai: ----- Dia: -  --------- Hora: -- - -- Conflicte con: --------");
-				add("--------> Total: 10 / 12 h assignades. (No Assignades: 4 h)");}
-			};
-				
-			
-		//	LeerFicheroPeticiones Pet =new LeerFIcheroPeticiones ("peticions.txt", int anyo, int mes, String idiomaE, String idiomaS);
-			
-	//		EscribirIncidenciasLog Incidencias =new EscribirIncidenciasLog (list, "incidencias.log", LeerFicheroPeticiones.  );
-		
-			/*
-			 * add("#Resum Activitats 11/2008"); 
-				add("#Activitat ReunioC");
-				add("Espai: Sala1 Dia: X 19/11/2008 Hora: 10-11 Conflicte con: ReunioJava");
-				add("Espai: Sala1 Dia: V 21/11/2008 Hora: 10-11 Conflicte con: ReunioJava");
-				add("--------> Total: 10 / 12 h assignades. (No Assignades: 4 h)");}
-			*/
-	
-	}
 }
