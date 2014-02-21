@@ -1,5 +1,6 @@
 package main;
 
+import negocio.EscribeHTML;
 import negocio.EscribirIncidenciasLog;
 import negocio.LeerFicheroConfig;
 import negocio.LeerFicheroPeticiones;
@@ -16,6 +17,8 @@ public class Main {
 					conf.getIdiomaE(),conf.getIdiomaS());
 			
 			EscribirIncidenciasLog Log = new EscribirIncidenciasLog(Peticiones.getLog(), "incidencias.log",Peticiones.getEstructura(),conf.getAny(), conf.getMes());
+			EscribeHTML HTML = new EscribeHTML(Peticiones.getEstructura(), "Agenda.HTM", conf.getMes()-1, conf.getAny());
+			HTML.buildAgenda();
 			
 		} catch (Exception e) {
 			e.printStackTrace();

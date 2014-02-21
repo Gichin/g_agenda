@@ -105,7 +105,7 @@ public class LeerFicheroPeticiones  extends LeerFichero {
 								 log.add(peticion
 										 + " " + auxEstMes[inHoras[x]][inDias[i]] 
 										 	 + " " + inDias[i] + " " + inHoras[x] 
-														 + " " + (inDias.length * inHoras.length)
+														 + " " + ((peticion.split(" ")[4].toString().length()) * inHoras.length)
 														 	 + " " + Utiles.DiadelaSemana((inDias[i]), this.mes, this.anyo, this.Trad)
 								 ) ;
 							  // System.out.println("Log Conflicto!!!  Dia " + (inDias[i]) +  "Hora " + inHoras[x] + " " + peticion.split(" ")[0]);
