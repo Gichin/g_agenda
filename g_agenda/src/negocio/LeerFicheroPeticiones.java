@@ -100,7 +100,8 @@ public class LeerFicheroPeticiones  extends LeerFichero {
 							 }
 							 //(peticion.split(" ")[0] != Trad.getCerradoE()){
 							 else if  (  !(comp1.equals(comp2)) ) {
-								 log.add(peticion);
+								 // log.add(peticion +  auxEstMes[inHoras[x]][inDias[i]] + " en Día " + inDias[i] + " Hora: " + inHoras[x] + "Total de Horas: " + (inDias.length * inHoras.length)) ;
+								 log.add(peticion +  auxEstMes[inHoras[x]][inDias[i]] + " " + inDias[i] + " " + inHoras[x] + " " + (inDias.length * inHoras.length)) ;
 							  // System.out.println("Log Conflicto!!!  Dia " + (inDias[i]) +  "Hora " + inHoras[x] + " " + peticion.split(" ")[0]);
 							 }
 						 }//for horas	 
