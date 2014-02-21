@@ -6,6 +6,10 @@ import util.*;
 
 public class EscribeHTML extends EscribirFichero {
 	
+	
+	
+	
+	
 	public EscribeHTML(List<String> lista, String nombreArchivo) throws IOException {		
 			super(lista, nombreArchivo);		
 		}

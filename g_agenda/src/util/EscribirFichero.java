@@ -28,7 +28,22 @@ import javax.activation.MailcapCommandMap;
 	public class EscribirFichero {
 		
 			private List<String> lista = new ArrayList<String>();
-			String nombreArchivo;
+			private String nombreArchivo;
+			
+			public void aDisco () throws FileNotFoundException{
+				PrintWriter fichero = new PrintWriter( new BufferedOutputStream(new FileOutputStream(nombreArchivo)),true);				 
+				
+				// hacemos un bucle para leer el contenido de la lista y 
+				//escribirlo en el fichero por líneas
+				
+				for (int i=0; i<lista.size(); i++)			
+						fichero.println(lista.get(i));	
+					
+				fichero.close();//cerramos el fichero
+		   	  	System.out.println("Fichero " + nombreArchivo + " generado.");
+				
+			}
+			
 			
 			// Método constructor. Hay que pasar una lista con los datos, y el nombre del archivo que quieres generar
 			public  EscribirFichero(List<String> lista, String nombreArchivo) throws IOException{
@@ -36,16 +51,7 @@ import javax.activation.MailcapCommandMap;
 				this.nombreArchivo=nombreArchivo;								
 				
 			// Creamos el fichero. También funciona con **PrintWriter pw = new PrintWriter(nombreArchivo);**
-			PrintWriter fichero = new PrintWriter( new BufferedOutputStream(new FileOutputStream(nombreArchivo)),true);				 
-				
-				// hacemos un bucle para leer el contenido de la lista y 
-				//escribirlo en el fichero por líneas
-				
-					for (int i=0; i<lista.size(); i++)			
-					fichero.println(lista.get(i));	
-		
-				fichero.close();//cerramos el fichero
-		   	  	System.out.println("Fichero " + nombreArchivo + " generado.");
+			
 		}
 
 			
