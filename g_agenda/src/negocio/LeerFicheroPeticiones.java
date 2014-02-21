@@ -88,12 +88,12 @@ public class LeerFicheroPeticiones  extends LeerFichero {
 									 if (comp1.equals(comp2))
 									 //if (peticion.split(" ")[0] == Trad.getCerradoE())
 									 {
-									 System.out.println("Dia " + (inDias[i]) +  "Hora " + inHoras[x] + " " +  Trad.getCerradoS() );
+									 //  System.out.println("Dia " + (inDias[i]) +  "Hora " + inHoras[x] + " " +  Trad.getCerradoS() );
 										 auxEstMes[inHoras[x]][inDias[i]]= Trad.getCerradoS();
 									 }
 									 else
 									 {
-										 System.out.println("Dia " + (inDias[i]) +  "Hora " + inHoras[x] + " " + peticion.split(" ")[0]);
+									 //	 System.out.println("Dia " + (inDias[i]) +  "Hora " + inHoras[x] + " " + peticion.split(" ")[0]);
 										 auxEstMes[inHoras[x]][inDias[i]]= peticion.split(" ")[0];
 									 }
 								 
@@ -101,7 +101,7 @@ public class LeerFicheroPeticiones  extends LeerFichero {
 							 //(peticion.split(" ")[0] != Trad.getCerradoE()){
 							 else if  (  !(comp1.equals(comp2)) ) {
 								 log.add(peticion);
-								 System.out.println("Log Conflicto!!!  Dia " + (inDias[i]) +  "Hora " + inHoras[x] + " " + peticion.split(" ")[0]);
+							  // System.out.println("Log Conflicto!!!  Dia " + (inDias[i]) +  "Hora " + inHoras[x] + " " + peticion.split(" ")[0]);
 							 }
 						 }//for horas	 
 					 }//If Dia Activo
