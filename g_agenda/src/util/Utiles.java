@@ -1,7 +1,6 @@
 package util;
 
 import java.io.IOException;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -9,7 +8,61 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import negocio.LeerFicheroConfig;
+
 public class Utiles {		
+	
+	public static String Mes_de_Salida(LeerFicheroConfig conf) throws Exception //ESTHER
+	{
+		AplicarIdiomas Idioma = new AplicarIdiomas(conf.getIdiomaE(), conf.getIdiomaS());
+		int imes;
+		imes = conf.getMes();
+		
+		String mes = null;
+		
+		  switch (imes) {
+			case 1:		
+				mes=Idioma.getEneroS();
+				break;
+			case 2:			
+				mes=Idioma.getFebreroS();
+				break;
+			case 3:			
+				mes=Idioma.getMarzoS();
+			break;
+			case 4:			
+				mes=Idioma.getAbrilS();
+				break;
+			case 5:			
+				mes=Idioma.getMayoS();
+				break;
+			case 6:			
+				mes=Idioma.getJunioS();
+				break;
+			case 7:			
+				mes=Idioma.getJulioS();
+				break;
+			case 8:		
+				mes=Idioma.getAgostoS();
+				break;
+			case 9:			
+				mes=Idioma.getSeptiembreS();
+				break;
+			case 10:			
+				mes=Idioma.getOctubreS();
+			break;
+			case 11:			
+				mes=Idioma.getNoviembreS();
+				break;
+			case 12:			
+				mes=Idioma.getDiciembreS();
+				break;
+			default:
+				break;
+			}       		
+		
+		return mes;		
+	}
 	
 	public static int [] Horas_Array(String Hor)  throws Exception  //ESTHER
 	{			
