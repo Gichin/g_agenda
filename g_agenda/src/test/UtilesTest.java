@@ -22,6 +22,7 @@ import util.AplicarIdiomas;
 import util.LeerFichero;
 import util.Utiles;
 
+
 public class UtilesTest {
 
 	@Test (expected=Exception.class)
@@ -54,14 +55,14 @@ public class UtilesTest {
 	public void Probar_DiadelaSemana()  throws Exception  //ESTHER
 	{		
 		AplicarIdiomas Id = new AplicarIdiomas ("CAT","");			
-		assertEquals (Utiles.DiadelaSemana(20, 2, 2014, Id), 'J', 0.000);
+		assertEquals (Utiles.DiadelaSemana(20, 2, 2014, Id), 'J', 0);
 	}
 	
 	@Test ()	
 	public void Probar_DiadelaSemana_OK()  throws Exception  //ESTHER
 	{		
 		AplicarIdiomas Id = new AplicarIdiomas ("CAT","ENG");				
-		assertEquals (Utiles.DiadelaSemana(20, 2, 2014, Id), 'J', 0.000);
+		assertEquals (Utiles.DiadelaSemana(20, 2, 2014, Id), 'J', 0);
 	}
 	
 	
