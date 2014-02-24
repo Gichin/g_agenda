@@ -9,6 +9,10 @@ import java.util.Map.Entry;
 
 
 
+
+
+
+
 import util.*;
 
 public class EscribeHTML extends EscribirFichero {
@@ -98,7 +102,7 @@ public class EscribeHTML extends EscribirFichero {
 			tHoras = e.getValue();
 			
 		int semana, semBegin, dPrincipio, dFin, cont;
-		dFin = setMaxDias(this.mes, this.anyo);
+		dFin = setMaxDias(this.mes -1, this.anyo);
 		semana = semBegin = QueSemana(dia1);
 		dPrincipio = cont = 1;
 		while (cont < dFin)
@@ -124,7 +128,7 @@ public class EscribeHTML extends EscribirFichero {
 	}
 	
 	
-	public void buildAgenda() throws FileNotFoundException
+	public void buildAgenda() throws Exception
 	{
 		headerHTML();
 		bodyHTML();
@@ -135,13 +139,13 @@ public class EscribeHTML extends EscribirFichero {
 	
 	
 	
-	public void headerHTML ()
+	public void headerHTML () throws Exception
 	{
 		this.lista.add("<html>");
 		this.lista.add("<head>");
 		this.lista.add("<title>" + this.Idiomas.getAgendaS() + "</title>"   );
 		this.lista.add("</BR>");
-		this.lista.add("<title>" + this.Conf + "</title>"   );
+		this.lista.add("<title>" + util.Utiles.Mes_de_Salida(this.Conf) + " " + this.anyo + "</title>"   );
 		this.lista.add("</head>");
 		this.lista.add("<body>");
 		
