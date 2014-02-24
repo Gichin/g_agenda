@@ -46,10 +46,10 @@ public class EscribeHTML extends EscribirFichero {
 							+ Idiomas.getVS() +
 										"</TD>" +
 							"<TD width=\"1000\" bgcolor=\"#F0E8AA\" >"
-							+ Idiomas.getDS() +
+							+ Idiomas.getSS() +
 										"</TD>" +
 							"<TD width=\"1000\" bgcolor=\"#F0E8AA\" >"
-							+ Idiomas.getXS() +
+							+ Idiomas.getDS() +
 										"</TD> </TR>" 
 					); 
 			for(int linea = 0; linea < 23; linea++ )
@@ -97,20 +97,25 @@ public class EscribeHTML extends EscribirFichero {
 			this.lista.add("<B>" + recurso + "</B>" + "</BR></BR></BR>");
 			tHoras = e.getValue();
 			
-		int semana, semBegin, dPrincipio, cont;
-		
+		int semana, semBegin, dPrincipio, dFin, cont;
+		dFin = setMaxDias(this.mes, this.anyo);
 		semana = semBegin = QueSemana(dia1);
 		dPrincipio = cont = 1;
-		while (semana == semBegin)
+		while (cont < dFin)
 		{
-			cont += 1;
-			semana = QueSemana(cont);
-			
-		}
-		headerTable(recurso);
-		bodyTable(dPrincipio, cont , tHoras);
-		footerTable();
-			
+
+			while (semana == semBegin)
+			{
+				cont += 1;
+				semana = QueSemana(cont);
+				
+			}
+			headerTable(recurso);
+			bodyTable(dPrincipio, cont , tHoras);
+			footerTable();
+			dPrincipio = cont;
+			semBegin = semana;		
+		}	
 			
 			
 			
@@ -205,6 +210,12 @@ public class EscribeHTML extends EscribirFichero {
 		return ca.get(Calendar.WEEK_OF_YEAR);
 	}
 	
+	private int setMaxDias(int mes, int anyo){
+		Calendar ca = Calendar.getInstance();
+		ca.set(Calendar.MONTH, mes );
+		ca.set(Calendar.YEAR, anyo);
+		return ca.getActualMaximum(Calendar.DAY_OF_MONTH);
+	} 
 	
 	private int dia1 (){
 		Calendar  ca = Calendar.getInstance();
