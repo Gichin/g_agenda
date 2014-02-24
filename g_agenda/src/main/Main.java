@@ -1,5 +1,7 @@
 package main;
 
+import java.io.File;
+
 import negocio.EscribeHTML;
 import negocio.EscribirIncidenciasLog;
 import negocio.LeerFicheroConfig;
@@ -16,8 +18,11 @@ public class Main {
 			LeerFicheroPeticiones Peticiones = new LeerFicheroPeticiones("peticions.txt", conf.getAny(), conf.getMes(),
 					conf.getIdiomaE(),conf.getIdiomaS());
 			
+			@SuppressWarnings("unused")
 			EscribirIncidenciasLog Log = new EscribirIncidenciasLog(Peticiones.getLog(), "incidencias.log",Peticiones.getEstructura(),conf.getAny(), conf.getMes());
-			EscribeHTML HTML = new EscribeHTML(Peticiones.getEstructura(), "Agenda.HTM", conf.getMes()-1, conf.getAny());
+
+
+			EscribeHTML HTML = new EscribeHTML(Peticiones.getEstructura(), "c:\\documentos\\Agenda.HTM", conf);
 			HTML.buildAgenda();
 			
 		} catch (Exception e) {
