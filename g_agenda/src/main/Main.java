@@ -16,7 +16,8 @@ public class Main {
 		try {
 			LeerFicheroConfig conf = new LeerFicheroConfig("config.txt");
 			
-			LeerFicheroPeticiones Peticiones = new LeerFicheroPeticiones("peticions.txt", conf.getAny(), conf.getMes(),
+
+			LeerFicheroPeticiones Peticiones = new LeerFicheroPeticiones("c:\\documentos\\peticions.txt", conf.getAny(), conf.getMes(),
 					conf.getIdiomaE(),conf.getIdiomaS());
 			
 			@SuppressWarnings("unused")
@@ -25,7 +26,6 @@ public class Main {
 
 			EscribeHTML HTML = new EscribeHTML(Peticiones.getEstructura(), "c:\\documentos\\Agenda.HTM", conf);
 			HTML.buildAgenda();
-			//File file = "c:\\documentos\\Agenda.HTM";
 			File file = new File ("c:\\documentos\\Agenda.HTM");
 			Desktop.getDesktop().open(file);
 			
