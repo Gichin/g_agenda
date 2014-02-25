@@ -26,6 +26,7 @@ public class EscribeHTML extends EscribirFichero {
 	
 	
 	
+	
 	public void bodyTable(int dSemana, int dPrincipio, int dFinal, String[][] tHoras)
 	{
 
