@@ -44,6 +44,7 @@ public class LeerFicheroPeticiones  extends LeerFichero {
 		 
 		 
 		 for (String peticion : lista) {
+			 System.out.println(peticion);
 			 dentroMes = DentroMes (peticion.split(" ")[2], peticion.split(" ")[3]);
 			 
 			 if (dentroMes.equals("si") ) {
