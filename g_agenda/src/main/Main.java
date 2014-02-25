@@ -1,5 +1,6 @@
 package main;
 
+import java.awt.Desktop;
 import java.io.File;
 
 import negocio.EscribeHTML;
@@ -24,6 +25,9 @@ public class Main {
 
 			EscribeHTML HTML = new EscribeHTML(Peticiones.getEstructura(), "c:\\documentos\\Agenda.HTM", conf);
 			HTML.buildAgenda();
+			//File file = "c:\\documentos\\Agenda.HTM";
+			File file = new File ("c:\\documentos\\Agenda.HTM");
+			Desktop.getDesktop().open(file);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
