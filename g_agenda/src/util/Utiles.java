@@ -150,13 +150,13 @@ public class Utiles {
 		
 	}
 	
-	public static void main(String[] args) throws Exception {	
+/*	public static void main(String[] args) throws Exception {	
 		
 		AplicarIdiomas rr = new AplicarIdiomas("CAT", "ENG");
 			
 			Horas_Array ("08-12");
 			Horas_Array ("08-11_15-20");					
 			DiadelaSemana(20, 2, 2014, rr);
-}		
+}		*/
 
 }
