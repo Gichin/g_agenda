@@ -43,9 +43,9 @@ public class AplicarIdiomas {
 	
 	// METODOS GET DE IDIOMA DE ENTRADA 
 	
-	public String getLinea() 		{	return Linea;	}
+//	public String getLinea() 		{	return Linea;	}
 	
-	public String[] getLineaE()		{	return LineaE;	}	
+//	public String[] getLineaE()		{	return LineaE;	}	
 	
 	public String getAgendaE() 		{	return AgendaE;	}
 	
@@ -90,7 +90,7 @@ public class AplicarIdiomas {
 
 	 // METODOS GET PARA IDIOMA SALIDA 
 		
-	public String[] getLineaS() 	{	return LineaS;	}
+//	public String[] getLineaS() 	{	return LineaS;	}
 	
 	public String getAgendaS() 		{	return AgendaS;	}
 
@@ -308,7 +308,7 @@ public class AplicarIdiomas {
 			
 	}	
 	
-	public static void main(String[] args)	{
+	/*public static void main(String[] args)	{
 		try {
 			
 			AplicarIdiomas idioma = new AplicarIdiomas ("CAT", "ENG");		
@@ -330,12 +330,12 @@ public class AplicarIdiomas {
 			System.out.println(idioma.getAnyS()+"-"+idioma.getMesS()+"-"+idioma.getSemS()+"-"+idioma.getDiaS());	
 			System.out.println(idioma.getLE()+"-"+idioma.getME()+"-"+idioma.getXE()+"-"+idioma.getJE()+"-"+idioma.getVE()+"-"+idioma.getSE()+"-"+idioma.getDE());	
 			System.out.println(idioma.getLS()+"-"+idioma.getMS()+"-"+idioma.getXS()+"-"+idioma.getJS()+"-"+idioma.getVS()+"-"+idioma.getSS()+"-"+idioma.getDS());	
-				*/	}
+					}
 		
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 
 
 	
