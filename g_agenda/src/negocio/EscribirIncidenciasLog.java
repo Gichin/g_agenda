@@ -11,7 +11,7 @@ public class EscribirIncidenciasLog extends EscribirFichero{
 	private static int anyI = 0;
 	private static int mesI = 0;		
 	
-	static List <String> TratarLista (List <String> lista)
+	private static List <String> TratarLista (List <String> lista)
 	{
 		String   Actividad1;	
 		String slineas;		
