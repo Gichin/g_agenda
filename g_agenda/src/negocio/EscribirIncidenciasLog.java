@@ -1,47 +1,36 @@
 package negocio;
-import java.io.BufferedOutputStream;
-import java.io.FileOutputStream;
+
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map.Entry;
+import util.EscribirFichero;
 
-
-public class EscribirIncidenciasLog {// extends EscribirFichero{
-	//private List<String> listaInci = new ArrayList<String>();
+public class EscribirIncidenciasLog extends EscribirFichero{
 	
-	private List<String> listaInciOrd = new ArrayList<String>();
-	//String nombreArchivo;
-
-	private int anyI, mesI;
-	String [] Linea;
-	String slineas;	
-	private String  Thoras;
-	String   Actividad1, Sala, dia, Actividad2;
-	int  Asignadas;
-
+	private static int anyI = 0;
+	private static int mesI = 0;		
 	
-	
-	public  EscribirIncidenciasLog(List<String> lista, String nombreArchivo, HashMap <String, String[][]> estructura, int any, int mes) throws IOException
+	static List <String> TratarLista (List <String> lista)
 	{
-		//	super(lista,nombreArchivo);		
-		mesI=mes;
-		anyI=any;	
+		String   Actividad1;	
+		String slineas;		
+		String [] Linea;	
+		
+		List<String> listaInciOrd = new ArrayList<String>();
+		
 		int iHoras = 0;
 		int Total;	
+		int hora1, hora2;
+		int  Asignadas = 0;
 		
-		
-		for (int i=0; i<lista.size(); i++)		{
-			
+		for (int i=0; i<lista.size(); i++)		
+		{		
 			slineas = lista.get(i);
-			Linea= slineas.split(" ");				
-			Actividad1 	= Linea[0];
-			
-			int hora1, hora2;
+			Linea= slineas.split(" ");	
+			Actividad1 	= Linea[0];			
 			hora1	= Integer.parseInt(Linea[8]);
-			hora2=hora1+1;
+			hora2=hora1+1;					
 			
 			if (i==0){				
 				listaInciOrd.add("# Resum Activitats :\t" + mesI+ "/" +anyI);
@@ -70,19 +59,15 @@ public class EscribirIncidenciasLog {// extends EscribirFichero{
 		}
 		Total=Asignadas+iHoras ;
 		listaInciOrd.add("");			
-		listaInciOrd.add("--------> Total: "+ Asignadas +" / "+ Total +" h assignades. (No Assignades:  " + iHoras + "  horas)");
-					
-		PrintWriter fichero = new PrintWriter( new BufferedOutputStream(new FileOutputStream(nombreArchivo)),true);			
-			for (int i=0; i<listaInciOrd.size(); i++)			
-			fichero.println(listaInciOrd.get(i));	
-	
-		//	Thoras     	 = Linea[9];
-		//	Asignadas	 = Integer.parseInt(Thoras) - iHoras;			
-			
-			fichero.close();				
-					
-		PrintWriter fichero2 = new PrintWriter( new BufferedOutputStream(new FileOutputStream("incidencias2.log")),true);
-			for (int i=0; i<lista.size(); i++)			
-			fichero2.println(lista.get(i));			
-}	
+		listaInciOrd.add("--------> Total: "+ Asignadas +" / "+ Total +" h assignades. (No Assignades:  " + iHoras + "  horas)");					
+		return listaInciOrd;
+	}
+
+	public  EscribirIncidenciasLog(List<String> lista, String nombreArchivo, HashMap <String, String[][]> estructura, int any, int mes) throws IOException
+	{
+		super(TratarLista(lista),nombreArchivo);	
+		mesI=mes;
+		anyI=any;	
+		super.aDisco();
+	}	
 }

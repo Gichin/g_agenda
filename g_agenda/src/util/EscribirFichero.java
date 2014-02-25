@@ -21,10 +21,7 @@ import java.util.List;
 
 import javax.activation.MailcapCommandMap;
 
-	/**
-	 * @author poo
-	 *
-	 */
+
 	public class EscribirFichero {
 		
 			private List<String> lista = new ArrayList<String>();
@@ -60,28 +57,14 @@ import javax.activation.MailcapCommandMap;
 			}
 			
 			// Método constructor. Hay que pasar una lista con los datos, y el nombre del archivo que quieres generar
+			
 			public  EscribirFichero(List<String> lista, String nombreArchivo) throws IOException{
 				this.lista=lista;
-				this.nombreArchivo=nombreArchivo;								
-			
+				this.nombreArchivo=nombreArchivo;				
 			}
 
 			public  EscribirFichero (String nombreArchivo){
 				this.nombreArchivo = nombreArchivo;
-			}
-			
-			
-			
-			public static void main(String[] args) throws IOException {
-				
-				List<String> listaPepito =				
-						
-						new ArrayList<String>() {{ add("Primera entrada"); add("dos");add("tres");add("cuatro");add("ultima entrada");}};
-				
-				
-			//	EscribirFichero fichePepito=new EscribirFichero (listaPepito,"incidencias.log");
-			//	System.out.println(fichePepito);
-			}
-			
+			}			
 	}
 
