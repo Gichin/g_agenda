@@ -33,27 +33,27 @@ public class EscribeHTML extends EscribirFichero {
 		
 		String aux = "";
 			this.lista.add( "<TR border = \"1\">" + 
-							"<TD width=\"1000\" bgcolor=\"#F0E8AA\" > " + this.Idiomas.getSemS() + " " 
+							"<TD width=\"10%\" bgcolor=\"#F0E8AA\"  > " + this.Idiomas.getSemS() + " " 
 							+ QueSemana(dPrincipio) + " </TD>" +
-							"<TD width=\"1000\" bgcolor=\"#F0E8AA\" >"
+							"<TD width=\"10%\" bgcolor=\"#F0E8AA\" >"
 							+ Idiomas.getLS() +
 										"</TD>" +
-							"<TD width=\"1000\" bgcolor=\"#F0E8AA\" >"
+							"<TD width=\"10%\" bgcolor=\"#F0E8AA\" >"
 							+ Idiomas.getMS() +
 										"</TD>" +
-							"<TD width=\"1000\" bgcolor=\"#F0E8AA\" >"
+							"<TD width=\"10%\" bgcolor=\"#F0E8AA\" >"
 							+ Idiomas.getXS() +
 										"</TD>" +
-							"<TD width=\"1000\" bgcolor=\"#F0E8AA\" >"
+							"<TD width=\"10%\" bgcolor=\"#F0E8AA\" >"
 							+ Idiomas.getJS() +
 										"</TD>" +
-							"<TD width=\"1000\" bgcolor=\"#F0E8AA\" >"
+							"<TD width=\"10%\" bgcolor=\"#F0E8AA\" >"
 							+ Idiomas.getVS() +
 										"</TD>" +
-							"<TD width=\"1000\" bgcolor=\"#F0E8AA\" >"
+							"<TD width=\"10%\" bgcolor=\"#F0E8AA\" >"
 							+ Idiomas.getSS() +
 										"</TD>" +
-							"<TD width=\"1000\" bgcolor=\"#F0E8AA\" >"
+							"<TD width=\"10%\" bgcolor=\"#F0E8AA\" >"
 							+ Idiomas.getDS() +
 										"</TD> </TR>" 
 					); 
@@ -141,7 +141,9 @@ public class EscribeHTML extends EscribirFichero {
 		for (Entry<String, String[][]> e: horarios.entrySet()) {
 			
 			recurso = e.getKey().toString();
-			this.lista.add("<B>" + recurso + "</B>" + "</BR></BR></BR>");
+			this.lista.add("<div align=\"center\" >");
+			this.lista.add("<B >" + recurso + "</B>" + "<BR/><BR/><BR/>");
+			
 			tHoras = e.getValue();
 			
 		int semana, semBegin, dPrincipio, dFin, cont, dSemana;
@@ -165,7 +167,7 @@ public class EscribeHTML extends EscribirFichero {
 			semBegin = semana;		
 		}	
 			
-			
+		this.lista.add("</div>");
 			
 			
 		}
@@ -188,7 +190,7 @@ public class EscribeHTML extends EscribirFichero {
 		this.lista.add("<html>");
 		this.lista.add("<head>");
 		this.lista.add("<title>" + this.Idiomas.getAgendaS() + "</title>"   );
-		this.lista.add("</BR>");
+		this.lista.add("<BR/>");
 		this.lista.add("<title>" + util.Utiles.Mes_de_Salida(this.Conf) + " " + this.anyo + "</title>"   );
 		this.lista.add("</head>");
 		this.lista.add("<body>");
@@ -200,19 +202,21 @@ public class EscribeHTML extends EscribirFichero {
 		this.lista.add("</table>");
 		this.lista.add("</body>");
 		this.lista.add("</html>");
+		
 	}
 	
 	
 	
 	public void headerTable (String cabecera )
 	{
-		this.lista.add("<TABLE>");
-		this.lista.add (" <caption>" +  cabecera + "</caption>");
 		
+		this.lista.add("<TABLE align=\"center\" width=\"80%\">");
+				
 	}
 	public void footerTable ()
 	{
 		this.lista.add("</TABLE>");
+		this.lista.add("<BR/>");this.lista.add("<BR/>");
 	}
 	
 	
