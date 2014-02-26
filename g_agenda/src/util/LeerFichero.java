@@ -12,7 +12,9 @@ public class LeerFichero
 	private List<String> lista = new ArrayList<String>();	
 	
 	public LeerFichero() throws Exception
-	{}
+	{
+		
+	}
 	
 	public LeerFichero (String Fichero) throws IOException	{
 	      String lineafichero;      

@@ -8,7 +8,12 @@ import negocio.LeerFicheroConfig;
 public class AplicarIdiomas {
 	
 	//Esther	
-
+ 
+	// NO NECESARIOS
+		
+//	public String getLinea() 		{	return Linea;	}	
+//	public String[] getLineaE()		{	return LineaE;	}	
+//	public String[] getLineaS() 	{	return LineaS;	}
 	
 	 // ATRIBUTOS PARA IDIOMA ENTRADA 
 	
@@ -42,10 +47,6 @@ public class AplicarIdiomas {
 	public LeerFichero getIdiomaE() {	return IdiomaE;	}
 	
 	// METODOS GET DE IDIOMA DE ENTRADA 
-	
-//	public String getLinea() 		{	return Linea;	}
-	
-//	public String[] getLineaE()		{	return LineaE;	}	
 	
 	public String getAgendaE() 		{	return AgendaE;	}
 	
@@ -90,7 +91,6 @@ public class AplicarIdiomas {
 
 	 // METODOS GET PARA IDIOMA SALIDA 
 		
-//	public String[] getLineaS() 	{	return LineaS;	}
 	
 	public String getAgendaS() 		{	return AgendaS;	}
 
@@ -135,14 +135,27 @@ public class AplicarIdiomas {
 	public LeerFichero getIdiomaS() {	return IdiomaS;	}
 	
 	
-
+	public AplicarIdiomas() {		
+	}
+	
+	
+	
+	public void setIdiomaE(LeerFichero util) {
+		this.IdiomaE = util;		
+	}
+	
+	public void setIdiomaS(LeerFichero util) {
+		this.IdiomaS = util;		
+	}
+		
+	
+	
 	public AplicarIdiomas (String idEntrada, String idSalida) throws Exception
 	{
-		this.IdiomaE = new LeerFichero("internacional."+idEntrada);
-		this.IdiomaE.getLista();
+		this.IdiomaE = new LeerFichero("internacional."+idEntrada);		
 		this.Rellenar_Campos_Entrada();
-		this.IdiomaS = new LeerFichero("internacional."+idSalida);
-		this.IdiomaS.getLista();		
+		
+		this.IdiomaS = new LeerFichero("internacional."+idSalida);				
 		this.Rellenar_Campos_Salida();
 	}
 	

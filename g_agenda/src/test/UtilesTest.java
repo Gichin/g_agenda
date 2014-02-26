@@ -4,22 +4,20 @@ package test;
  * @author Ester Mesa
  *
  */
-import static org.junit.Assert.*;
+import static org.junit.Assert.*; 
 
-import java.io.IOException;
-import java.util.List;
+//import java.io.IOException;
+//import java.util.List;
+//import junit.framework.Assert;
+//import negocio.LeerFicheroConfig;
+//import org.junit.After;
+//import org.junit.AfterClass;
+//import org.junit.Before;
+//import org.junit.BeforeClass;
+//import util.LeerFichero;
 
-import junit.framework.Assert;
-import negocio.LeerFicheroConfig;
-
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-
 import util.AplicarIdiomas;
-import util.LeerFichero;
 import util.Utiles;
 
 

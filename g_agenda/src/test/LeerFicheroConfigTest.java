@@ -1,7 +1,6 @@
 package test;
 
-import static org.junit.Assert.*;
-
+import static org.junit.Assert.*; 
 import java.io.IOException;
 import java.util.List;
 
@@ -13,10 +12,37 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.runners.MockitoJUnitRunner;
+
 import util.LeerFichero;
+/**
+ * @author Ester Mesa
+ *
+ */
+
+@RunWith(MockitoJUnitRunner.class)
+
 
 public class LeerFicheroConfigTest {
+	
+	private LeerFicheroConfig SUT;
 
+	@Mock
+	private LeerFichero util;
+	
+	@Before
+	public void inicio() {
+		try {
+			SUT = new LeerFicheroConfig("config.txt");
+		} catch (IOException e) {		
+			e.printStackTrace();
+		}
+	}
+	
+	
 
 	@Test (expected=IOException.class)
 	public void ProbarConstructorParametrotest() throws IOException
