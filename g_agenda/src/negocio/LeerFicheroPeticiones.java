@@ -69,7 +69,7 @@ public class LeerFicheroPeticiones  extends LeerFichero {
 		
 				 
 				 
-				 for (int i=0; i<(inDias.length-1); i++)
+				 for (int i=0; i<(inDias.length); i++)
 				 {
 					 int esDiaActivo = peticion.split(" ")[4].indexOf(Utiles.DiadelaSemana((inDias[i]), this.mes, this.anyo, this.Trad));
 //					 System.out.println("Día " + (inDias[i])+ "/"+ this.mes + "/" +this.anyo + 
@@ -83,19 +83,19 @@ public class LeerFicheroPeticiones  extends LeerFichero {
 							 comp1 = peticion.split(" ")[0];
 							 comp2 = Trad.getCerradoE();
 //							 System.out.println("x "+ x + " i "+ i + " Valor " + auxEstMes[inHoras[x]][inDias[i]]);
-							 if ((auxEstMes[inHoras[x]][inDias[i]]==null) ){
+							 if ((auxEstMes[inHoras[x]][i]==null) ){
 								 
 									 
 									 if (comp1.equals(comp2))
 									 //if (peticion.split(" ")[0] == Trad.getCerradoE())
 									 {
 									 //  System.out.println("Dia " + (inDias[i]) +  "Hora " + inHoras[x] + " " +  Trad.getCerradoS() );
-										 auxEstMes[inHoras[x]][inDias[i]]= Trad.getCerradoS();
+										 auxEstMes[inHoras[x]][i]= Trad.getCerradoS();
 									 }
 									 else
 									 {
 									 //	 System.out.println("Dia " + (inDias[i]) +  "Hora " + inHoras[x] + " " + peticion.split(" ")[0]);
-										 auxEstMes[inHoras[x]][inDias[i]]= peticion.split(" ")[0];
+										 auxEstMes[inHoras[x]][i]= peticion.split(" ")[0];
 									 }
 								 
 							 }
@@ -104,7 +104,7 @@ public class LeerFicheroPeticiones  extends LeerFichero {
 								 
 								 // log.add(peticion +  auxEstMes[inHoras[x]][inDias[i]] + " en Día " + inDias[i] + " Hora: " + inHoras[x] + "Total de Horas: " + (inDias.length * inHoras.length)) ;
 								 log.add(peticion
-										 + " " + auxEstMes[inHoras[x]][inDias[i]] 
+										 + " " + auxEstMes[inHoras[x]][i] 
 										 	 + " " + inDias[i] + " " + inHoras[x] 
 														 + " " + ((peticion.split(" ")[4].toString().length()) * inHoras.length)
 														 	 + " " + Utiles.DiadelaSemana((inDias[i]), this.mes, this.anyo, this.Trad)

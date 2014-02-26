@@ -64,17 +64,24 @@ public class EscribeHTML extends EscribirFichero {
 				if (dSemana == 0 )
 				{
 					//for (int columna=0 ; columna< 7; columna++)
-					for (int i = dPrincipio -1 ; i <= (dFinal-1); i ++)
+					for (int i = dPrincipio-1  ; i <= (dFinal-1); i ++)
 					{
 						aux = "<TD";
-						if ((tHoras[linea][i] == null)  )//si esa hora es activa
+						if ((i) < tHoras[linea].length)
+						{
+							if ((tHoras[linea][i] == null)  )//si esa hora es activa
+							{
+								aux += " bgcolor=\"#363640\"> </TD>";
+							} //
+							else
+							{	
+							aux +="  bgcolor=\"#E9EEF1\" align=\"center\" >" + tHoras[linea][i] + "</TD>";
+								
+							}
+						}
+						else
 						{
 							aux += " bgcolor=\"#363640\"> </TD>";
-						} //
-						else
-						{	
-						aux +="  bgcolor=\"#E9EEF1\" align=\"center\" >" + tHoras[linea][i] + "</TD>";
-							
 						}
 						this.lista.add(aux);
 						
@@ -90,14 +97,21 @@ public class EscribeHTML extends EscribirFichero {
 					for (int columna=dSemana ; columna< 7; columna++)
 					{
 						aux = "<TD";
-						if ((tHoras[linea][columna-dSemana] == null)  )//si esa hora es activa
+						if ((dPrincipio + columna-dSemana - 1) < tHoras[linea].length)
+						{
+							if ((tHoras[linea][dPrincipio + columna-dSemana - 1] == null)  )//si esa hora es activa
+							{
+								aux += " bgcolor=\"#363640\"> </TD>";
+							} //
+							else
+							{	
+							aux +="  bgcolor=\"#E9EEF1\" align=\"center\" >" + tHoras[linea][dPrincipio + columna-dSemana - 1] + "</TD>";
+								
+							}
+						}
+						else
 						{
 							aux += " bgcolor=\"#363640\"> </TD>";
-						} //
-						else
-						{	
-						aux +="  bgcolor=\"#E9EEF1\" align=\"center\" >" + tHoras[linea][columna-dSemana] + "</TD>";
-							
 						}
 						this.lista.add(aux);
 					}
@@ -132,7 +146,7 @@ public class EscribeHTML extends EscribirFichero {
 			
 		int semana, semBegin, dPrincipio, dFin, cont, dSemana;
 		dFin = setMaxDias(this.mes, this.anyo);
-		semana = semBegin = QueSemana(diaSemana(1));
+		semana = semBegin = QueSemana(1);
 		dPrincipio = cont = 1;
 		while (cont < dFin)
 		{
@@ -219,20 +233,22 @@ public class EscribeHTML extends EscribirFichero {
 	//Privadas
 	private int QueSemana (int dia){
 		Calendar  ca = Calendar.getInstance();
-		ca.setFirstDayOfWeek(2);
 		ca.set(Calendar.DAY_OF_MONTH, dia);		
 		ca.set(Calendar.MONTH, this.mes);
 		ca.set(Calendar.YEAR, this.anyo);
+		ca.setMinimalDaysInFirstWeek(1);
+		
+		
 		
 		return ca.get(Calendar.WEEK_OF_YEAR); 
 	}
 	private int semanasMes (){
 		Calendar  ca = Calendar.getInstance();
-		ca.setFirstDayOfWeek(2);
 		ca.set(Calendar.MONTH, this.mes);
 		ca.set(Calendar.YEAR, this.anyo);
 		int ultimo = ca.getActualMaximum(Calendar.DAY_OF_MONTH);
 		ca.set(Calendar.DAY_OF_MONTH, ultimo);
+		ca.setMinimalDaysInFirstWeek(1);
 		//instanciando el ultimo día sabemos el número de semanas del mes
 		return ca.get(Calendar.WEEK_OF_MONTH); //la primera semana es 1 no 0
 	}
@@ -241,7 +257,7 @@ public class EscribeHTML extends EscribirFichero {
 	private int numSemana (int dia){
 		Calendar  ca = Calendar.getInstance();
 		ca.setFirstDayOfWeek(2);
-
+		ca.setMinimalDaysInFirstWeek(1);
 
 		ca.set(Calendar.DAY_OF_MONTH, dia);
 		ca.set(Calendar.MONTH, this.mes);
@@ -251,7 +267,7 @@ public class EscribeHTML extends EscribirFichero {
 	
 	private int setMaxDias(int mes, int anyo){
 		Calendar ca = Calendar.getInstance();
-		ca.setFirstDayOfWeek(2);
+		ca.setMinimalDaysInFirstWeek(1);
 		ca.set(Calendar.MONTH, mes );
 		ca.set(Calendar.YEAR, anyo);
 		return ca.getActualMaximum(Calendar.DAY_OF_MONTH);
@@ -259,7 +275,7 @@ public class EscribeHTML extends EscribirFichero {
 	
 	private int diaSemana (int diaS){
 		Calendar  ca = Calendar.getInstance();
-		ca.setFirstDayOfWeek(2);
+//		ca.setFirstDayOfWeek(2);
 		ca.set(Calendar.DAY_OF_MONTH, diaS);
 		ca.set(Calendar.MONTH, this.mes);
 		ca.set(Calendar.YEAR, this.anyo);

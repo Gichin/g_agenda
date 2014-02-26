@@ -18,7 +18,7 @@ public class Main {
 			LeerFicheroConfig conf = new LeerFicheroConfig("config.txt");
 			
 
-			LeerFicheroPeticiones Peticiones = new LeerFicheroPeticiones("c:\\documentos\\peticions.txt", conf.getAny(), conf.getMes(),
+			LeerFicheroPeticiones Peticiones = new LeerFicheroPeticiones("peticions.txt", conf.getAny(), conf.getMes(),
 					conf.getIdiomaE(),conf.getIdiomaS());
 			
 			@SuppressWarnings("unused")
