@@ -11,7 +11,7 @@ public class EscribirIncidenciasLog extends EscribirFichero{
 	private static int anyI = 0;
 	private static int mesI = 0;		
 	
-	private static List <String> TratarLista (List <String> lista)
+	public static List <String> TratarLista (List <String> lista)
 	{
 		String   Actividad1;	
 		String slineas;		
@@ -70,4 +70,10 @@ public class EscribirIncidenciasLog extends EscribirFichero{
 		anyI=any;	
 		super.aDisco();
 	}	
+	public EscribirIncidenciasLog(List<String> lista, String nombreArchivo,int any, int mes) throws IOException{
+		super(TratarLista(lista), nombreArchivo);	
+		mesI=mes;
+		anyI=any;	
+		super.aDisco();
+	}
 }

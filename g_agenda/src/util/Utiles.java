@@ -15,6 +15,7 @@ public class Utiles {
 	public static String Mes_de_Salida(LeerFicheroConfig conf) throws Exception //ESTHER
 	{
 		AplicarIdiomas Idioma = new AplicarIdiomas(conf.getIdiomaE(), conf.getIdiomaS());
+		
 		int imes;
 		imes = conf.getMes();
 		
@@ -150,13 +151,4 @@ public class Utiles {
 		
 	}
 	
-/*	public static void main(String[] args) throws Exception {	
-		
-		AplicarIdiomas rr = new AplicarIdiomas("CAT", "ENG");
-			
-			Horas_Array ("08-12");
-			Horas_Array ("08-11_15-20");					
-			DiadelaSemana(20, 2, 2014, rr);
-}		*/
-
 }

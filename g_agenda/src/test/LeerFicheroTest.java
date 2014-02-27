@@ -23,24 +23,36 @@ import util.LeerFichero;
 public class LeerFicheroTest
 
 {
-
+	private LeerFichero SUT;
+	
+	@Before
+	
+	public void Inicio (){
+		try {
+			SUT = new LeerFichero("peticions.txt");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
 	@Test (expected=IOException.class)
-	public void ProbarConstructorParametrotest() throws IOException
+	
+	public void ProbarParametroERROR() throws IOException
 	{	
-		new LeerFichero("a");		
+		SUT = new LeerFichero("a");		
 	}
 
 	@Test ()
-	public void ProbarConstructorParametrotestExcepcion() throws IOException
+	public void ProbarConstructorOK() throws IOException
 	{	
-		new LeerFichero("peticions.txt");		
+		SUT = new LeerFichero("peticions.txt");		
 	}
 	
 	@Test ()
-	public void ProbarConstructorParametrotestExcepcionLista() throws IOException
+	public void ProbarAccesoLista() throws IOException
 	{			
-		LeerFichero Lee =new LeerFichero("peticions.txt");
-		List <String> Lista = Lee.getLista();
+		List <String> Lista = SUT.getLista();
 		System.out.println(Lista);
 	}
 	

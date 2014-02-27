@@ -33,6 +33,7 @@ public class LeerFicheroConfig extends LeerFichero
 		String PrimLinea, SegundaLinea;
 		
 		PrimLinea=lista.get(0);
+		
 		SegundaLinea=lista.get(1);
 		
 		this.any = Integer.parseInt(PrimLinea.split(" ")[0]) ;

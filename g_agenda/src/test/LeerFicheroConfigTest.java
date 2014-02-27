@@ -25,7 +25,6 @@ import util.LeerFichero;
 
 @RunWith(MockitoJUnitRunner.class)
 
-
 public class LeerFicheroConfigTest {
 	
 	private LeerFicheroConfig SUT;
@@ -37,39 +36,33 @@ public class LeerFicheroConfigTest {
 	public void inicio() {
 		try {
 			SUT = new LeerFicheroConfig("config.txt");
+			
 		} catch (IOException e) {		
 			e.printStackTrace();
 		}
-	}
-	
-	
+	}	
 
 	@Test (expected=IOException.class)
-	public void ProbarConstructorParametrotest() throws IOException
+	public void ProbarConstructorParametroError() throws IOException
 	{	
 		new LeerFicheroConfig("a");		
 	}
 	@Test ()
-	public void ProbarConstructorParametrotestExcepcion() throws IOException
+	public void ProbarConstructorParametroOK() throws IOException
 	{	
 		new LeerFicheroConfig("config.txt");		
 	}
 		
 	@Test ()
-	public void ProbarConstructorParametrotestExcepcionLista() throws IOException
-	{	
-		
-		LeerFicheroConfig Lee =new LeerFicheroConfig("config.txt");
-		List <String> Lista = Lee.getLista();
-		System.out.println(Lista);
+	public void ProbarLista() throws IOException
+	{			
+		List <String> Lista = SUT.getLista();
 	}
 	@Test ()
 	
-	public void ProbarExcepcionLista() throws IOException
+	public void ProbarCamposDeLista() throws IOException
 	{	
-		LeerFicheroConfig Lee =new LeerFicheroConfig("config.txt");
-		System.out.println(Lee.getAny());
-		System.out.println(Lee.getIdiomaE());
-
+		assertEquals(SUT.getAny(),2008, 0);
+		assertEquals(SUT.getMes(),11, 0);		
 	}
 }
