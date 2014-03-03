@@ -25,9 +25,9 @@ public class Main {
 			EscribirIncidenciasLog Log = new EscribirIncidenciasLog(Peticiones.getLog(), "incidencias.log",Peticiones.getEstructura(),conf.getAny(), conf.getMes());
 
 
-			EscribeHTML HTML = new EscribeHTML(Peticiones.getEstructura(), "c:\\documentos\\Agenda.HTM", conf);
+			EscribeHTML HTML = new EscribeHTML(Peticiones.getEstructura(), "Agenda.HTM", conf);
 			HTML.buildAgenda();
-			File file = new File ("c:\\documentos\\Agenda.HTM");
+			File file = new File ("Agenda.HTM");
 			Desktop.getDesktop().open(file);
 			
 		} catch (Exception e) {
